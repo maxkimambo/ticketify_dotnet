@@ -1,86 +1,94 @@
 ﻿<!DOCTYPE html>
-<html>
 <!DOCTYPE html>
+<html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
 <!--<![endif]-->
 <head>
     <title>e-Tickets for Buses - @ViewBag.Title </title>
 
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+   <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="/favicon.ico">
 
-    <!-- Web Fonts -->
-    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+        <!-- Web Fonts -->
+        <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
-    <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+        <!-- CSS Global Compulsory -->
+        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
 
-    <!-- CSS Header and Footer -->
-    <link rel="stylesheet" href="/assets/css/headers/header-v6.css">
-    <link rel="stylesheet" href="/assets/css/footers/footer-v4.css">
+        <!-- CSS Header and Footer -->
+        <link rel="stylesheet" href="/assets/css/headers/header-default.css">
+        <link rel="stylesheet" href="/assets/css/footers/footer-v3.css">
 
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="/assets/plugins/animate.css">
-    <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/plugins/image-hover/css/img-hover.css">
+        <!-- CSS Implementing Plugins -->
+        <link rel="stylesheet" href="/assets/plugins/animate.css">
+        <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
+        <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/plugins/image-hover/css/img-hover.css">
 
-    <!-- CSS Page Style -->
-    <link rel="stylesheet" href="/assets/css/pages/page_job.css">
+        <!-- CSS Page Style -->
+        <link rel="stylesheet" href="/assets/css/pages/page_job.css">
 
-    <!-- CSS Customization -->
-    <link rel="stylesheet" href="/assets/css/custom.css">
-</head>
+        <!-- CSS Customization -->
+        <link rel="stylesheet" href="/assets/css/custom.css">
+    </head>
 
 <body class="header-fixed header-fixed-space">
     <div class="wrapper">
-        <!--=== Header v6 ===-->
-        <div class="header-v6 header-classic-dark header-sticky">
-           @Html.Partial("_Nav")
+        <div class="header">
+            <div class="container">
+                @Html.Partial("_Logo")
+
+                @Html.Partial("_LanguageSelector")
+
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <!-- End Toggle -->
+            </div>
+            @Html.Partial("_Nav")
         </div>
-        <!--=== End Header v6 ===-->
+    
         @RenderBody()
-    </div><!--/End Wrapepr-->
+    </div><!--/End Wrapper-->
     
 
     <!-- JS Global Compulsory -->
-    <script type="text/javascript" src="//assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- JS Implementing Plugins -->
     <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
     <script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
     <script type="text/javascript" src="/assets/plugins/jquery.parallax.js"></script>
-    <script type="text/javascript" src="/assets/plugins/counter/waypoints.min.js"></script>
-    <script type="text/javascript" src="/assets/plugins/counter/jquery.counterup.min.js"></script>
-    <script type="text/javascript" src="/assets/plugins/image-hover/js/modernizr.js"></script>
     <script type="text/javascript" src="/assets/plugins/image-hover/js/touch.js"></script>
+    <script type="text/javascript" src="/assets/plugins/image-hover/js/modernizr.js"></script>
     <!-- JS Customization -->
     <script type="text/javascript" src="/assets/js/custom.js"></script>
     <!-- JS Page Level -->
     <script type="text/javascript" src="/assets/js/app.js"></script>
     <script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initCounter();
-        App.initParallaxBg();
-    });
+        jQuery(document).ready(function () {
+            App.init();
+            App.initParallaxBg();
+        });
     </script>
     <!--[if lt IE 9]>
         <script src="/assets/plugins/respond.js"></script>
         <script src="/assets/plugins/html5shiv.js"></script>
         <script src="/assets/plugins/placeholder-IE-fixes.js"></script>
     <![endif]-->
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

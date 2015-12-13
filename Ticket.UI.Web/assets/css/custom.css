@@ -1,1 +1,5 @@
 /* Add here all your css styles (customizations) */
+
+body.header-fixed-space {
+    padding-top: 20px;
+}
