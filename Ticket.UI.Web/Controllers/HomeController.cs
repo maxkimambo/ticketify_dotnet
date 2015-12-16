@@ -6,8 +6,18 @@ using System.Web.Mvc;
 
 namespace Ticket.UI.Web.Controllers
 {
+    using Ticket.Interfaces.Business;
+
     public class HomeController : Controller
     {
+        private readonly ICompanyService companyService;
+
+        public HomeController(ICompanyService companyService)
+        {
+            this.companyService = companyService;
+        }
+
+
         public ActionResult Index()
         {
             return View();

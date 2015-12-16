@@ -39,7 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ticket.Domain\Ticket.Domain.csproj">
+      <Project>{A3EFB804-FA62-42DB-925F-6002C8B09A0C}</Project>
+      <Name>Ticket.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket.Interfaces.Business\Ticket.Interfaces.Business.csproj">
+      <Project>{10D30174-1FEB-4430-A822-97D939C78224}</Project>
+      <Name>Ticket.Interfaces.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
