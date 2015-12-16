@@ -10,7 +10,8 @@
 namespace Ticket.Data
 {
     using System;
-    using Ticket.Data.Model;
+    using Ticket.Domain;
+
 
     /// <summary>
     /// The unit of work.

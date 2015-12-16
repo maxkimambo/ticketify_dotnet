@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ticket.Domain\Ticket.Domain.csproj">
+      <Project>{a3efb804-fa62-42db-925f-6002c8b09a0c}</Project>
+      <Name>Ticket.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ticket.Interfaces.Data\Ticket.Interfaces.Data.csproj">
       <Project>{A822C7D3-84C8-4048-9CE4-DBC762B5D922}</Project>
       <Name>Ticket.Interfaces.Data</Name>
