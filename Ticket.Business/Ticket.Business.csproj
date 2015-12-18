@@ -51,6 +51,10 @@
       <Project>{10D30174-1FEB-4430-A822-97D939C78224}</Project>
       <Name>Ticket.Interfaces.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ticket.Interfaces.Data\Ticket.Interfaces.Data.csproj">
+      <Project>{A822C7D3-84C8-4048-9CE4-DBC762B5D922}</Project>
+      <Name>Ticket.Interfaces.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

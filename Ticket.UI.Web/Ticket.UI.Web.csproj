@@ -187,6 +187,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1640,6 +1641,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Company\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1652,6 +1654,10 @@
     <ProjectReference Include="..\Ticket.Business\Ticket.Business.csproj">
       <Project>{E3D23482-E8DC-422F-BD33-CCAAD13B58A4}</Project>
       <Name>Ticket.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket.Domain\Ticket.Domain.csproj">
+      <Project>{A3EFB804-FA62-42DB-925F-6002C8B09A0C}</Project>
+      <Name>Ticket.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ticket.Interfaces.Business\Ticket.Interfaces.Business.csproj">
       <Project>{10D30174-1FEB-4430-A822-97D939C78224}</Project>

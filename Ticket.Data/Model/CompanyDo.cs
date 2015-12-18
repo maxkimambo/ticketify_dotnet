@@ -12,7 +12,7 @@ namespace Ticket.Data.Model
     /// <summary>
     ///     The company
     /// </summary>
-    public class Company
+    public class CompanyDo
     {
         #region Public Properties
 

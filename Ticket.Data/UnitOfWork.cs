@@ -6,40 +6,51 @@
 //   The unit of work.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Ticket.Data
 {
     using System;
     using Ticket.Domain;
 
-
     /// <summary>
-    /// The unit of work.
+    ///     The unit of work.
     /// </summary>
     public class UnitOfWork : IDisposable
     {
         #region Fields
 
         /// <summary>
-        /// The context.
+        ///     The context.
         /// </summary>
         private readonly TicketContext context;
 
         /// <summary>
-        /// The company repository.
+        ///     The company repository.
         /// </summary>
         private Repository<Company> companyRepository;
+
+        /// <summary>
+        /// The disposed.
+        /// </summary>
+        private bool disposed;
 
         #endregion
 
         #region Constructors and Destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
+        ///     Initializes a new instance of the <see cref="UnitOfWork" /> class.
         /// </summary>
         public UnitOfWork()
         {
             context = new TicketContext();
+        }
+
+        /// <summary>
+        ///     Finalizes an instance of the <see cref="UnitOfWork" /> class.
+        /// </summary>
+        ~UnitOfWork()
+        {
+            Dispose(false);
         }
 
         #endregion
@@ -74,21 +85,15 @@ namespace Ticket.Data
             context.SaveChanges();
         }
 
-        #endregion
-
         /// <summary>
-        /// Finalizes an instance of the <see cref="UnitOfWork"/> class. 
+        /// The dispose.
         /// </summary>
-        ~UnitOfWork()
-        {
-            Dispose(false);
-        }
-
-        private bool disposed = false; 
-
+        /// <param name="disposing">
+        /// The disposing.
+        /// </param>
         public void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
@@ -96,13 +101,18 @@ namespace Ticket.Data
                 }
             }
 
-            this.disposed = true; 
+            disposed = true;
         }
 
+        /// <summary>
+        /// The dispose.
+        /// </summary>
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        #endregion
     }
 }

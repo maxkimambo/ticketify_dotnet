@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ticket.Data
 {
-    class MapperConfig
+    public static class MapperConfig
     {
     }
 }

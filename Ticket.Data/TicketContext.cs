@@ -18,6 +18,6 @@ namespace Ticket.Data
         /// <summary>
         /// Gets or sets the companies.
         /// </summary>
-        public DbSet<Company> Companies { get; set; }
+        public DbSet<CompanyDo> Companies { get; set; }
     }
 }
