@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ticket.Business.Tests
 {
+    using FluentAssertions;
     using Moq;
     using Ticket.Domain;
     using Ticket.Interfaces.Business;
@@ -16,12 +17,9 @@ namespace Ticket.Business.Tests
     {
         private IRepository<Company> companyRepo = new Mock<IRepository<Company>>().Object;
 
-      
-
         private ICompanyService sut;
 
         private List<Company> companyList;  
-
 
         public CompanyServiceTests()
         {
@@ -57,11 +55,15 @@ namespace Ticket.Business.Tests
         public void ShouldRetrieveAListOfCompanies()
         {
 
-            //var companyRepo = new Mock<IRepository<Company>>()
-            //    .Setup(s => s.Get(null, null))
-            //    .Returns(companyList); 
-            
-            //sut = new CompanyService(companyRepo, busRepo); 
+            var companyRepo = new Mock<IRepository<Company>>();
+            companyRepo.Setup(s => s.Get(null, null))
+                .Returns(companyList);
+            var busRepo = new Mock<IRepository<Bus>>().Object;  
+
+            sut = new CompanyService(companyRepo.Object, busRepo);
+            var result = sut.GetCompanies();
+
+            result.Count().Should().Be(4); 
         }
     }
 }
