@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Ticket.UI.Web.Controllers
 {
@@ -12,11 +8,13 @@ namespace Ticket.UI.Web.Controllers
     {
         private readonly ICompanyService companyService;
 
-        public HomeController(ICompanyService companyService)
+        private readonly ITripScheduleService scheduleService;
+
+        public HomeController(ICompanyService companyService, ITripScheduleService scheduleService)
         {
             this.companyService = companyService;
+            this.scheduleService = scheduleService;
         }
-
 
         public ActionResult Index()
         {

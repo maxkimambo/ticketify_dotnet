@@ -42,7 +42,7 @@ namespace Ticket.Data
         /// </summary>
         public UnitOfWork()
         {
-            context = new TicketContext();
+            context = new TicketContext("dev");
         }
 
         /// <summary>
@@ -66,10 +66,24 @@ namespace Ticket.Data
             {
                 if (companyRepository == null)
                 {
-                    companyRepository = new Repository<Company>(context);
+                    companyRepository = new Repository<Company>();
                 }
 
                 return companyRepository;
+            }
+        }
+
+        private IScheduleRepository scheduleRepository;
+
+        public IScheduleRepository ScheduleRepository
+        {
+            get
+            {
+                if (this.scheduleRepository == null)
+                {
+                    this.scheduleRepository = new ScheduleRepository();
+                }
+                return this.scheduleRepository;
             }
         }
 

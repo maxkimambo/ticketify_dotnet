@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +50,13 @@
   <ItemGroup>
     <Compile Include="CompanyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TripScheduleService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ticket.Data\Ticket.Data.csproj">
+      <Project>{BE79C24B-D3A6-4FD5-9B68-8F4AB02F65F7}</Project>
+      <Name>Ticket.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ticket.Domain\Ticket.Domain.csproj">
       <Project>{A3EFB804-FA62-42DB-925F-6002C8B09A0C}</Project>
       <Name>Ticket.Domain</Name>
@@ -55,6 +69,10 @@
       <Project>{A822C7D3-84C8-4048-9CE4-DBC762B5D922}</Project>
       <Name>Ticket.Interfaces.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

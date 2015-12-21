@@ -47,9 +47,10 @@ namespace Ticket.Data
         /// <param name="context">
         /// The context.
         /// </param>
-        public Repository(TicketContext context)
+        public Repository()
         {
-            this.context = context;
+            //TODO : pass this connection from the config file
+            this.context = new TicketContext("dev");
             this.dbSet = this.context.Set<T>();
         }
 
@@ -98,7 +99,7 @@ namespace Ticket.Data
         /// The <see cref="IEnumerable">List of Objects
         /// </returns>
         public virtual IEnumerable<T> Get(
-            Expression<Func<T, bool>> filter = null, 
+            Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
         {
             IQueryable<T> query = dbSet;

@@ -2,12 +2,7 @@
 
 namespace Ticket.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Ticket.Data.Model;
 
     /// <summary>
@@ -15,6 +10,11 @@ namespace Ticket.Data
     /// </summary>
     public class TicketContext : DbContext
     {
+        public TicketContext(string connString)
+            : base(connString)
+        {
+
+        }
         /// <summary>
         /// Gets or sets the companies.
         /// </summary>

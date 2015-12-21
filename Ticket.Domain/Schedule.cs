@@ -4,7 +4,7 @@
 
     public class Schedule
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public Bus Bus { get; set; }
         public DateTime Departure { get; set; }
         public DateTime Arrival { get; set; }

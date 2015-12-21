@@ -1655,6 +1655,10 @@
       <Project>{E3D23482-E8DC-422F-BD33-CCAAD13B58A4}</Project>
       <Name>Ticket.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ticket.Data\Ticket.Data.csproj">
+      <Project>{BE79C24B-D3A6-4FD5-9B68-8F4AB02F65F7}</Project>
+      <Name>Ticket.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ticket.Domain\Ticket.Domain.csproj">
       <Project>{A3EFB804-FA62-42DB-925F-6002C8B09A0C}</Project>
       <Name>Ticket.Domain</Name>
@@ -1662,6 +1666,10 @@
     <ProjectReference Include="..\Ticket.Interfaces.Business\Ticket.Interfaces.Business.csproj">
       <Project>{10D30174-1FEB-4430-A822-97D939C78224}</Project>
       <Name>Ticket.Interfaces.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ticket.Interfaces.Data\Ticket.Interfaces.Data.csproj">
+      <Project>{A822C7D3-84C8-4048-9CE4-DBC762B5D922}</Project>
+      <Name>Ticket.Interfaces.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
