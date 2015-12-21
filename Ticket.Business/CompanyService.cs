@@ -26,7 +26,8 @@ namespace Ticket.Business
 
         public IEnumerable<Company> GetCompanies()
         {
-            throw new NotImplementedException();
+            var companies = companyRepository.Get().ToList();
+            return companies; 
         }
 
         public Company GetCompanyById(int id)

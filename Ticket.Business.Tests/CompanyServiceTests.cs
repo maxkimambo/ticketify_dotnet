@@ -54,15 +54,12 @@ namespace Ticket.Business.Tests
         [Fact]
         public void ShouldRetrieveAListOfCompanies()
         {
-
             var companyRepo = new Mock<IRepository<Company>>();
             companyRepo.Setup(s => s.Get(null, null))
                 .Returns(companyList);
             var busRepo = new Mock<IRepository<Bus>>().Object;  
-
             sut = new CompanyService(companyRepo.Object, busRepo);
             var result = sut.GetCompanies();
-
             result.Count().Should().Be(4); 
         }
     }
