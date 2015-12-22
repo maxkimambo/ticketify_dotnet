@@ -34,5 +34,12 @@ namespace Ticket.UI.Web.Controllers
 
             return View();
         }
+
+        public JsonResult GetScheduledTrips()
+        {
+            var schedule = scheduleService.GetTodaysSchedule();
+
+            return Json(schedule, JsonRequestBehavior.AllowGet);
+        }
     }
 }
