@@ -11,6 +11,7 @@ namespace Ticket.Business
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Ticket.Domain;
     using Ticket.Interfaces.Business;
     using Ticket.Interfaces.Data;
@@ -74,7 +75,9 @@ namespace Ticket.Business
         /// </exception>
         public IEnumerable<Schedule> GetFullSchedule()
         {
-            throw new NotImplementedException();
+            var fullSchedule = unitOfWork.ScheduleRepository.Get();
+
+            return fullSchedule.ToList(); 
         }
 
         /// <summary>
@@ -101,7 +104,7 @@ namespace Ticket.Business
         /// </returns>
         /// <exception cref="NotImplementedException">
         /// </exception>
-        public IEnumerable<Schedule> GetTodaysSchedule()
+        public IEnumerable<Schedule> GetFeaturedDestinationsSchedule()
         {
             throw new NotImplementedException();
         }

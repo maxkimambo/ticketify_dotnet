@@ -1,0 +1,23 @@
+﻿@model Ticket.Domain.Company
+
+@{
+    ViewBag.Title = "Setup";
+}
+
+<div ng-app="app">
+     </div>
+    <h2>Setup</h2>
+    <div class="alert-danger">
+        <p class="text-danger"> You have errors</p>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert-danger">
+            <p class="text-danger"> You have errors</p>
+        </div>
+    }
+
+    <p>@Html.ValidationSummary()</p>
+
+<p>@Model.Name</p>

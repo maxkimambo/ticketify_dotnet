@@ -43,11 +43,19 @@ namespace Ticket.Data
         #region Constructors and Destructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="UnitOfWork" /> class.
+        /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
         /// </summary>
-        public UnitOfWork()
+        /// <param name="companyRepository">
+        /// The company Repository.
+        /// </param>
+        /// <param name="scheduleRepository">
+        /// The schedule Repository.
+        /// </param>
+        public UnitOfWork(ICompanyRepository companyRepository, IScheduleRepository scheduleRepository)
         {
-            context = new TicketContext("dev");
+            this.companyRepository = companyRepository;
+            this.scheduleRepository = scheduleRepository;
+            this.context = new TicketContext("dev");
         }
 
         /// <summary>
@@ -95,7 +103,14 @@ namespace Ticket.Data
         /// </summary>
         public void Commit()
         {
-            context.SaveChanges();
+            try
+            {
+                this.context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>

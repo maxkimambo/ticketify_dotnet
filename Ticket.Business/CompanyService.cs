@@ -13,14 +13,15 @@ namespace Ticket.Business
 
     public class CompanyService : ICompanyService
     {
+        private readonly IUnitOfWork unitOfWork;
         private readonly IRepository<Company> companyRepository;
 
         private readonly IRepository<Bus> busRepo;
 
-        public CompanyService(IRepository<Company> companyRepository, IRepository<Bus> busRepo )
+        public CompanyService(IUnitOfWork unitOfWork )
        {
-           this.companyRepository = companyRepository;
-           this.busRepo = busRepo;
+            this.unitOfWork = unitOfWork;
+            this.companyRepository = this.unitOfWork.CompanyRepository; 
        }
 
 

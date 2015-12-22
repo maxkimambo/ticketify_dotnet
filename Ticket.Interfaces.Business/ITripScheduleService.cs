@@ -8,7 +8,7 @@
     {
         IEnumerable<Schedule> GetFullSchedule();
 
-        IEnumerable<Schedule> GetTodaysSchedule();
+        IEnumerable<Schedule> GetFeaturedDestinationsSchedule();
 
         void AddItemToSchedule(Schedule schedule);
 

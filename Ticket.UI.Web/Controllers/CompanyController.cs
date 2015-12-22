@@ -18,16 +18,72 @@ namespace Ticket.UI.Web.Controllers
     /// </summary>
     public class CompanyController : Controller
     {
+        /// <summary>
+        /// The cs.
+        /// </summary>
         private readonly ICompanyService cs;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompanyController"/> class.
+        /// </summary>
+        /// <param name="cs">
+        /// The cs.
+        /// </param>
         public CompanyController(ICompanyService cs)
         {
             this.cs = cs;
         }
 
-        // GET: Company
 
-        // GET: Company/Create
+        /// <summary>
+        /// The register.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult Register()
+        {
+            var company = new Company(); 
+
+            return View(company); 
+        }
+
+        /// <summary>
+        /// The register.
+        /// </summary>
+        /// <param name="company">
+        /// The company.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        [HttpPost]
+        public ActionResult Register(Company company)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(company);
+            }
+
+            this.cs.CreateCompany(company);
+
+            return View(company);
+        }
+
+        [HttpGet]
+        public ActionResult Setup(int id)
+        {
+            // fetch the company 
+            var company = this.cs.GetCompanyById(id);
+
+            if (company == null)
+            {
+                ModelState.AddModelError("notfound", "Company not found");
+            }
+
+            return View(company); 
+        }
+
         #region Public Methods and Operators
 
         /// <summary>
@@ -143,6 +199,7 @@ namespace Ticket.UI.Web.Controllers
         /// </returns>
         public ActionResult Index()
         {
+
             return View();
         }
 
