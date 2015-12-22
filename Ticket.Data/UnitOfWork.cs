@@ -10,11 +10,13 @@ namespace Ticket.Data
 {
     using System;
     using Ticket.Domain;
+    using Ticket.Interfaces.Data;
+
 
     /// <summary>
     ///     The unit of work.
     /// </summary>
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         #region Fields
 
@@ -26,7 +28,10 @@ namespace Ticket.Data
         /// <summary>
         ///     The company repository.
         /// </summary>
-        private Repository<Company> companyRepository;
+        private ICompanyRepository companyRepository;
+
+        private IScheduleRepository scheduleRepository; 
+
 
         /// <summary>
         /// The disposed.
@@ -57,39 +62,33 @@ namespace Ticket.Data
 
         #region Public Properties
 
-        /// <summary>
-        ///     Company repository Getter
-        /// </summary>
-        public Repository<Company> CompanyRepository
+        #endregion
+
+        #region Public Methods and Operators
+
+        public ICompanyRepository CompanyRepository
         {
             get
             {
                 if (companyRepository == null)
                 {
-                    companyRepository = new Repository<Company>();
+                    companyRepository = new CompanyRepository(); 
                 }
-
-                return companyRepository;
+                return companyRepository; 
             }
         }
-
-        private IScheduleRepository scheduleRepository;
 
         public IScheduleRepository ScheduleRepository
         {
             get
             {
-                if (this.scheduleRepository == null)
+                if (scheduleRepository == null)
                 {
-                    this.scheduleRepository = new ScheduleRepository();
+                    scheduleRepository = new ScheduleRepository(); 
                 }
-                return this.scheduleRepository;
+                return scheduleRepository; 
             }
         }
-
-        #endregion
-
-        #region Public Methods and Operators
 
         /// <summary>
         ///     Saves all the changes that happened in a transaction

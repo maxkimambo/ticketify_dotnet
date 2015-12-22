@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScheduleRepository.cs" />
+    <Compile Include="CompanyRepository.cs" />
     <Compile Include="MapperConfig.cs" />
     <Compile Include="Model\CompanyDo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
