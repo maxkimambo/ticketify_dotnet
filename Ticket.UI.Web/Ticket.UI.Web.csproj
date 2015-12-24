@@ -190,16 +190,19 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TicketControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RequestResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
     <Content Include="assets\ajax\cube-portfolio\project1.html" />
     <Content Include="assets\ajax\cube-portfolio\project2.html" />
     <Content Include="assets\ajax\cube-portfolio\project3.html" />
@@ -1420,11 +1423,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="assets\php\sky-forms-pro\demo-comment-process.php" />
-    <Content Include="assets\php\sky-forms-pro\demo-contacts-process.php" />
-    <Content Include="assets\php\sky-forms-pro\demo-login-process.php" />
-    <Content Include="assets\php\sky-forms-pro\demo-order-process.php" />
-    <Content Include="assets\php\sky-forms-pro\demo-review-process.php" />
     <Content Include="assets\plugins\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="assets\plugins\bootstrap\css\bootstrap.css.map" />
     <Content Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -1591,6 +1589,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1641,9 +1641,12 @@
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Company\Register.cshtml" />
     <Content Include="Views\Company\Setup.cshtml" />
+    <Content Include="Views\Company\_RequestResult.cshtml" />
+    <Content Include="Views\Shared\_RequestResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TicketControllerBase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

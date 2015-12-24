@@ -7,17 +7,20 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace Ticket.UI.Web.Controllers
 {
     using System.Web.Mvc;
     using Ticket.Domain;
     using Ticket.Interfaces.Business;
+    using Ticket.UI.Web.Models;
 
     /// <summary>
     /// The company controller.
     /// </summary>
-    public class CompanyController : Controller
+    public class CompanyController : TicketControllerBase
     {
+
         /// <summary>
         /// The cs.
         /// </summary>
@@ -32,6 +35,7 @@ namespace Ticket.UI.Web.Controllers
         public CompanyController(ICompanyService cs)
         {
             this.cs = cs;
+
         }
 
 
@@ -43,9 +47,9 @@ namespace Ticket.UI.Web.Controllers
         /// </returns>
         public ActionResult Register()
         {
-            var company = new Company(); 
+            var company = new Company();
 
-            return View(company); 
+            return View(company);
         }
 
         /// <summary>
@@ -81,7 +85,15 @@ namespace Ticket.UI.Web.Controllers
                 ModelState.AddModelError("notfound", "Company not found");
             }
 
-            return View(company); 
+            return View(company);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCompanyInfo(Company company)
+        {
+
+
+            return this.SendRequestResult("Data saved", RequestResultType.Failed);
         }
 
         #region Public Methods and Operators
@@ -122,8 +134,8 @@ namespace Ticket.UI.Web.Controllers
                     // Insertion logic 
 
                     cs.CreateCompany(company);
-                    
-                    return RedirectToAction("Index"); 
+
+                    return RedirectToAction("Index");
                 }
             }
             catch
@@ -131,7 +143,7 @@ namespace Ticket.UI.Web.Controllers
                 return View();
             }
         }
-        
+
         /// <summary>
         /// The details.
         /// </summary>
@@ -143,8 +155,8 @@ namespace Ticket.UI.Web.Controllers
         /// </returns>
         public ActionResult Details(int id)
         {
-            var company = cs.GetCompanyById(id); 
-            
+            var company = cs.GetCompanyById(id);
+
             return View(company);
         }
 
@@ -159,7 +171,7 @@ namespace Ticket.UI.Web.Controllers
         /// </returns>
         public ActionResult Edit(int id)
         {
-            var company = cs.GetCompanyById(id); 
+            var company = cs.GetCompanyById(id);
 
             return View(company);
         }

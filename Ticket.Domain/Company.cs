@@ -1,6 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Company.cs" company="">
-//   
 // </copyright>
 // <summary>
 //   The company.
@@ -10,6 +9,7 @@
 namespace Ticket.Domain
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// The company.
@@ -31,17 +31,19 @@ namespace Ticket.Domain
         /// <summary>
         /// Gets or sets the contact person.
         /// </summary>
+        [Required(ErrorMessage = "Contact Person is a required field")]
         public string ContactPerson { get; set; }
 
         /// <summary>
         /// Gets or sets the fax.
         /// </summary>
+
         public string Fax { get; set; }
 
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
-        public object Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -51,6 +53,7 @@ namespace Ticket.Domain
         /// <summary>
         /// Gets or sets the phone.
         /// </summary>
+        [Required(ErrorMessage = "Please enter the phone number, it is where we shall transfer your money to..")]
         public string Phone { get; set; }
 
         /// <summary>

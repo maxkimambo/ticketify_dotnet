@@ -1,0 +1,48 @@
+﻿@using Ticket.UI.Web.Models
+@model Ticket.UI.Web.Models.RequestResult
+
+
+@switch (Model.ResultType)
+{
+    case RequestResultType.Success:
+        {
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Success!</strong>
+                <p>@Model.Message</p>
+            </div>
+        }
+        break;
+
+    case RequestResultType.Warning:
+        {
+            <div class="alert alert-warning fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Warning!</strong>
+                <p>@Model.Message</p>
+            </div>
+        }
+        break;
+
+    case RequestResultType.Info:
+        {
+            <div class="alert alert-info fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Info!</strong>
+                <p>@Model.Message</p>
+            </div>
+        }
+        break;
+
+    case RequestResultType.Failed:
+        {
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Error!</strong> 
+                <p>@Model.Message</p>
+            </div>
+        }
+        break;
+
+}
+
