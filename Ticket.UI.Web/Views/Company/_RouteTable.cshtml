@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Ticket.Domain.Route>
+<table id="routes-table" data-base="@Request.ApplicationPath" class="table table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Start</th>
+            <th>Destination</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var loc in Model)
+        {
+
+            <tr>
+                <td> @loc.Start.Name </td>
+                <td> @loc.Destination.Name </td>
+                <td><a href="#" data-route-id="@loc.Id" data-toggle="modal" onclick="ticketify.showRoutesModal(@loc.Id)" data-target="#routeModal"> <i class="fa fa-edit"></i> </a> </td>
+                <td><a href="#" data-route-id="@loc.Id" onclick="ticketify.deleteRoutesModal(@loc.Id)" data-target="#deleteRouteModal"> <i class="fa fa-remove"></i> </a> </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+

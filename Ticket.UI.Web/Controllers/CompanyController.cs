@@ -127,131 +127,60 @@ namespace Ticket.UI.Web.Controllers
 
         }
 
-        public ActionResult UpdateBusses(Bus bus)
+        [HttpPost]
+        public ActionResult UpdateBusses(int id, Bus bus)
         {
 
             return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
-        #region Public Methods and Operators
-
-        /// <summary>
-        /// The create.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="ActionResult"/>.
-        /// </returns>
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Company/Create
-        /// <summary>
-        /// The create.
-        /// </summary>
-        /// <param name="collection">
-        /// The collection.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ActionResult"/>.
-        /// </returns>
         [HttpPost]
-        public ActionResult Create(Company company)
+        public ActionResult Payment(int id, Company company)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    // TODO: Add insert logic here
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    // Insertion logic 
 
-                    cs.CreateCompany(company);
-
-                    return RedirectToAction("Index");
-                }
-            }
-            catch
-            {
-                return View();
-            }
+            return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
-        /// <summary>
-        /// The details.
-        /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ActionResult"/>.
-        /// </returns>
-        public ActionResult Details(int id)
-        {
-            var company = cs.GetCompanyById(id);
-
-            return View(company);
-        }
-
-        /// <summary>
-        /// The edit.
-        /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ActionResult"/>.
-        /// </returns>
-        public ActionResult Edit(int id)
-        {
-            var company = cs.GetCompanyById(id);
-
-            return View(company);
-        }
-
-        // POST: Company/Edit/5
-        /// <summary>
-        /// The edit.
-        /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
-        /// <param name="collection">
-        /// The collection.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ActionResult"/>.
-        /// </returns>
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult ProcessRoutes()
         {
-            try
-            {
-                // TODO: Add update logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
-        /// <summary>
-        /// The index.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="ActionResult"/>.
-        /// </returns>
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Routes(int id)
         {
-
-            return View();
+            var routes = this.cs.GetListOfRoutes(id).Where(r => r.Id == id);
+            return base.ToJson(routes);
         }
 
-        #endregion
+        [HttpPost]
+        public ActionResult DeleteRoute(int id)
+        {
+            // do the route deletion here 
+
+
+            // return a fresh view with available routes. 
+            return this.GetRoutesForCompany(id);
+        }
+
+
+        [HttpGet]
+        public ActionResult GetRoutesForCompany(int id)
+        {
+            var routes = this.cs.GetListOfRoutes(id);
+
+            return this.PartialView("_RouteTable", routes);
+        }
+
+        [HttpGet]
+        public ActionResult GetBussesForCompany(int id)
+        {
+            var busses = this.cs.GetBusses(id);
+
+            return this.PartialView("_BussesTab", busses);
+        }
+
+
     }
 }

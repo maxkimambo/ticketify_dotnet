@@ -1649,10 +1649,12 @@
     <Content Include="Views\Company\_BussesTab.cshtml" />
     <Content Include="Views\Company\_RoutesTab.cshtml" />
     <Content Include="Views\Company\_PaymentTab.cshtml" />
+    <Content Include="Views\Company\_RouteTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\datatables\" />
+    <Folder Include="Views\test\" />
     <Folder Include="Views\TicketControllerBase\" />
   </ItemGroup>
   <ItemGroup>

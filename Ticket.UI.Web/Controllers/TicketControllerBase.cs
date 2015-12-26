@@ -2,6 +2,9 @@
 
 namespace Ticket.UI.Web.Controllers
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
+
     using Ticket.UI.Web.Models;
 
     public class TicketControllerBase : Controller
@@ -25,6 +28,16 @@ namespace Ticket.UI.Web.Controllers
             requestResult.ResultType = type;
 
             return this.PartialView("_RequestResult", requestResult);
+        }
+
+        public ActionResult ToJson(object obj)
+        {
+            var settings = new JsonSerializerSettings
+                               {
+                                   ContractResolver = new CamelCasePropertyNamesContractResolver()
+                               };
+            var json = JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
+            return Content(json, "application/json");
         }
     }
 }

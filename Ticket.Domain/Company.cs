@@ -12,61 +12,58 @@ namespace Ticket.Domain
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// The company.
+    ///     The company.
     /// </summary>
     public class Company
     {
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the address.
+        ///     Gets or sets the address.
         /// </summary>
         public string Address { get; set; }
 
         /// <summary>
-        /// Gets or sets the busses.
+        ///     Gets or sets the busses.
         /// </summary>
         public virtual List<Bus> Busses { get; set; }
 
         /// <summary>
-        /// Gets or sets the contact person.
+        ///     Gets or sets the contact person.
         /// </summary>
         [Required(ErrorMessage = "Contact Person is a required field")]
         public string ContactPerson { get; set; }
 
         /// <summary>
-        /// Gets or sets the fax.
+        ///     Gets or sets the fax.
         /// </summary>
-
         public string Fax { get; set; }
 
         /// <summary>
-        /// Gets or sets the id.
+        ///     Gets or sets the id.
         /// </summary>
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Please enter a number registered with mobile banking")]
+        public string MobileBankingNumber { get; set; }
+
+        public MobileProviderType MobileProvider { get; set; }
+
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the phone.
+        ///     Gets or sets the phone.
         /// </summary>
         [Required(ErrorMessage = "Please enter the phone number, it is where we shall transfer your money to..")]
         public string Phone { get; set; }
 
-
         /// <summary>
-        /// Gets or sets the tin.
+        ///     Gets or sets the tin.
         /// </summary>
         public string Tin { get; set; }
-
-
-        public MobileProviderType MobileProvider { get; set; }
-
-
-        public string MobileBankingNumber { get; set; }
 
         #endregion
     }
@@ -74,7 +71,9 @@ namespace Ticket.Domain
     public enum MobileProviderType
     {
         Tigo,
+
         Zain,
+
         Vodacom
     }
 }
