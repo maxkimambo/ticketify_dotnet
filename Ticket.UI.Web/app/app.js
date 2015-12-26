@@ -1,16 +1,17 @@
 ﻿var ticketify = (function ($, document, window) {
+    var standardTimeout = 5000; 
+
     // public members
     return {
-        processCompany: processCompany
+        autoHide: autoHide
     }; 
 
     // private stuff 
 
-    function processCompany() {
+    function autoHide() {
         setTimeout(function () {
-            console.log('processed company'); 
-            $('#request-result').empty();
-        }, 3000);
+            $('.auto-hide').empty();
+        }, standardTimeout);
     }
 
 })($, document, window); 

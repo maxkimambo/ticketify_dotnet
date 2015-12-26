@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
 <html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -19,25 +20,7 @@
         <!-- Web Fonts -->
         <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
-        <!-- CSS Global Compulsory -->
-        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/css/style.css">
-
-        <!-- CSS Header and Footer -->
-        <link rel="stylesheet" href="/assets/css/headers/header-default.css">
-        <link rel="stylesheet" href="/assets/css/footers/footer-v3.css">
-
-        <!-- CSS Implementing Plugins -->
-        <link rel="stylesheet" href="/assets/plugins/animate.css">
-        <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
-        <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/assets/plugins/image-hover/css/img-hover.css">
-
-        <!-- CSS Page Style -->
-        <link rel="stylesheet" href="/assets/css/pages/page_job.css">
-
-        <!-- CSS Customization -->
-        <link rel="stylesheet" href="/assets/css/custom.css">
+        @Styles.Render("~/Content/css")
     </head>
 
 <body class="header-fixed header-fixed-space">
@@ -57,27 +40,15 @@
             </div>
             @Html.Partial("_Nav")
         </div>
-    
+
         @RenderBody()
     </div><!--/End Wrapper-->
-    
+    @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    
+
     @Scripts.Render("~/bundles/app")
-    <!-- JS Global Compulsory -->
-    @*<script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>*@
-    @*<script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>*@
-    <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- JS Implementing Plugins -->
-    <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
-    <script type="text/javascript" src="/assets/plugins/jquery.parallax.js"></script>
-    <script type="text/javascript" src="/assets/plugins/image-hover/js/touch.js"></script>
-    <script type="text/javascript" src="/assets/plugins/image-hover/js/modernizr.js"></script>
-    <!-- JS Customization -->
-    <script type="text/javascript" src="/assets/js/custom.js"></script>
-    <!-- JS Page Level -->
-    <script type="text/javascript" src="/assets/js/app.js"></script>
+    
+    @Scripts.Render("~/bundles/plugins")
     <script type="text/javascript">
         jQuery(document).ready(function () {
             App.init();
@@ -89,9 +60,8 @@
         <script src="/assets/plugins/html5shiv.js"></script>
         <script src="/assets/plugins/placeholder-IE-fixes.js"></script>
     <![endif]-->
-
     @RenderSection("scripts", required: false)
-</body>
+  </body>
 </html>
 
    

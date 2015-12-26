@@ -10,10 +10,14 @@
 
 namespace Ticket.UI.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Text;
     using System.Web.Mvc;
     using Ticket.Domain;
     using Ticket.Interfaces.Business;
     using Ticket.UI.Web.Models;
+    using Ticket.UI.Web.ViewModels;
 
     /// <summary>
     /// The company controller.
@@ -79,21 +83,54 @@ namespace Ticket.UI.Web.Controllers
         {
             // fetch the company 
             var company = this.cs.GetCompanyById(id);
+            var busses = this.cs.GetBusses(id);
+            var routes = this.cs.GetListOfRoutes(id);
 
             if (company == null)
             {
                 ModelState.AddModelError("notfound", "Company not found");
             }
 
-            return View(company);
+            var setupVm = new CompanySetupViewModel();
+            setupVm.Company = company;
+            setupVm.Busses = busses;
+            setupVm.Routes = routes;
+
+            return View(setupVm);
         }
 
         [HttpPost]
         public ActionResult UpdateCompanyInfo(Company company)
         {
+            var badFields = new StringBuilder();
+            if (!ModelState.IsValid)
+            {
+                foreach (var k in this.ModelState.Keys.Where(k => !this.ModelState.IsValidField(k)))
+                {
+                    badFields.Append(k);
+                    badFields.Append(" ");
+                }
 
+                return this.SendRequestResult(string.Format("Please correct the errors in {0} and submit again", badFields.ToString()), RequestResultType.Warning);
+            }
 
-            return this.SendRequestResult("Data saved", RequestResultType.Failed);
+            try
+            {
+                //this.cs.EditCompany(company);
+                return this.SendRequestResult("Data saved", RequestResultType.Success);
+            }
+            catch (Exception ex)
+            {
+                return this.SendRequestResult(string.Format("Error updating information: {0}", ex.Message), RequestResultType.Failed);
+
+            }
+
+        }
+
+        public ActionResult UpdateBusses(Bus bus)
+        {
+
+            return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
         #region Public Methods and Operators

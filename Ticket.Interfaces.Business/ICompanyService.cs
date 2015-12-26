@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Ticket.Interfaces.Business
 {
@@ -12,7 +8,7 @@ namespace Ticket.Interfaces.Business
     {
         IEnumerable<Company> GetCompanies();
         Company GetCompanyById(int id);
-        
+
         void CreateCompany(Company company);
 
         void EditCompany(Company company);
@@ -23,6 +19,10 @@ namespace Ticket.Interfaces.Business
 
         void AddBus(Company company, Bus bus);
 
-        void RemoveBus(Company company, Bus bus); 
+        void RemoveBus(Company company, Bus bus);
+
+        IEnumerable<Route> GetListOfRoutes(int companyId);
+
+        IEnumerable<Bus> GetBusses(int companyId);
     }
 }

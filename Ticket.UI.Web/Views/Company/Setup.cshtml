@@ -1,4 +1,7 @@
-﻿@model Ticket.Domain.Company
+﻿
+
+
+@model Ticket.UI.Web.ViewModels.CompanySetupViewModel
 
 @{
     ViewBag.Title = "Setup";
@@ -28,7 +31,7 @@
                 </li>
                 <li class="">
                     <a href="#payment" data-toggle="tab" aria-expanded="false">
-                        <i class="fa  fa-cc-visa"></i> Payment
+                        <i class="fa  fa-cc-visa"></i> Account Info
                     </a>
                 </li>
             </ul>
@@ -37,100 +40,18 @@
         @*tab content starts here*@
         <div class="col-sm-9">
             <div class="tab-content">
-                <div class="tab-pane fade active in" id="company">
-                    <div class="row">
-                        <div class="panel panel-green margin-bottom-40">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-home"></i> Company Information</h3>
-                            </div>
-                            <div class="panel-body">
-                                @{
-                                    var companyFormOptions = new AjaxOptions()
-                                    {
-                                        HttpMethod = "POST",
-                                        Url = Url.Action("UpdateCompanyInfo", "Company"),
-                                        InsertionMode = InsertionMode.InsertAfter,
-                                         UpdateTargetId = "request-result",
-                                         OnSuccess = "ticketify.processCompany"
-                                    };
-                                }
-                                @using (Ajax.BeginForm("Register", "Company", companyFormOptions))
-                                {
-                                    @Html.AntiForgeryToken()
-
-                                    <div id="request-result">
-                                        
-                                    </div>
-                                    
-                                    <div class="form-horizontal">
-                                        <hr />
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                        
-                                        
-
-                                        <div class="form-group">
-                                            @Html.Label("Company name", new { @class = "control-label col-md-4" })
-                                            <div class="col-md-8">
-                                                @Html.HiddenFor(m => m.Id)
-                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.Label("Contact person", new { @class = "control-label col-md-4" })
-                                            <div class="col-md-8">
-                                                @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-4" })
-                                            <div class="col-md-8">
-                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-4" })
-                                            <div class="col-md-8">
-                                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-4" })
-                                            <div class="col-md-8">
-                                                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Tin, htmlAttributes: new { @class = "control-label col-md-4" })
-                                            <div class="col-md-8">
-                                                @Html.EditorFor(model => model.Tin, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Tin, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-offset-4 col-md-8">
-                                                <input type="submit" value="Update" class="btn btn-success" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @Html.Partial("_CompanyTab", Model.Company)
                 <div class="tab-pane fade" id="busses">
-                    <p>Busses</p>
+                  
+                 @Html.Partial("_BussesTab", Model.Busses)   
+                    
+
                 </div>
                 <div class="tab-pane fade" id="routes">
-                    <p>Routes</p>
+                   @Html.Partial("_RoutesTab", Model.Routes)
                 </div>
                 <div class="tab-pane fade" id="payment">
-                    <p>Payment</p>
+                    @Html.Partial("_PaymentTab", Model.Company)
                 </div>
             </div>
         </div>

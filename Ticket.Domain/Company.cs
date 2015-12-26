@@ -56,11 +56,25 @@ namespace Ticket.Domain
         [Required(ErrorMessage = "Please enter the phone number, it is where we shall transfer your money to..")]
         public string Phone { get; set; }
 
+
         /// <summary>
         /// Gets or sets the tin.
         /// </summary>
         public string Tin { get; set; }
 
+
+        public MobileProviderType MobileProvider { get; set; }
+
+
+        public string MobileBankingNumber { get; set; }
+
         #endregion
+    }
+
+    public enum MobileProviderType
+    {
+        Tigo,
+        Zain,
+        Vodacom
     }
 }
