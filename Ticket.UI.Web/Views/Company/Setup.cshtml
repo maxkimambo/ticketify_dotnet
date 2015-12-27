@@ -1,10 +1,11 @@
 ﻿
-
-
+@using Ticket.UI.Web.helpers
 @model Ticket.UI.Web.ViewModels.CompanySetupViewModel
 
 @{
     ViewBag.Title = "Setup";
+
+    var setupData = Model.ToJson(); 
 }
 
 <div class="container">
@@ -59,3 +60,6 @@
     </div>
 </div>
 
+<script>
+    angular.module("ticketify").value("setupData", @Html.Raw(setupData))
+</script>

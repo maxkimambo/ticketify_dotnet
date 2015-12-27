@@ -23,11 +23,21 @@
                 <h4 class="modal-title" id="myModalLabel">Edit Route</h4>
             </div>
             <div class="modal-body">
-                   
+                <form id="routesForm" class="form-inline">
+                    <div class="form-group">
+                        <label for="start">Start</label>
+                        <input type="text" class="form-control" name="start" id="start" value="" placeholder="Starting point">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="email" class="form-control" name="destination" value="" id="destination" placeholder="Destination">
+                    </div>
+                        
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Save changes</button>
+                <button type="button" class="btn btn-success" onclick="ticketify.saveRouteData()">Save changes</button>
             </div>
         </div>
     </div>

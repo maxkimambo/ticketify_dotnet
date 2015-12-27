@@ -1,0 +1,29 @@
+﻿@model IList<Ticket.Domain.Bus>
+<div ng-controller="BussesController as vm">
+    <table id="bustable" class="table table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Registration</th>
+                <th>Capacity</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          
+            <tr ng-repeat="bus in vm.busses">
+                <td>{{bus.number}}</td>
+                <td>{{bus.capacity}}</td>
+                <td>
+                    <a href="#" ng-click="vm.editBus(bus)"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <a href="#" ng-click="vm.removeBus(bus)"><i class="fa fa-remove"></i></a>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>
+

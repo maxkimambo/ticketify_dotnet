@@ -1,59 +1,39 @@
-﻿@model IEnumerable<Ticket.Domain.Bus>
+﻿@model IList<Ticket.Domain.Bus>
 <div class="panel panel-green margin-bottom-40">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-home"></i> Busses</h3>
     </div>
     <div class="panel-body">
-        
-        <table id="bustable" class="table table-condensed table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>Registration</th>
-                    <th>Capacity</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var bus in Model)
-                {
-                    <tr>
-                        <td>@bus.Number</td>
-                        <td>@bus.Capacity</td>
-                        <td><a href="#"> <i class="fa fa-edit"></i> </a> </td>
-                    </tr>
-                }
-               
-            </tbody>
-        </table>
-        
-        
+        @Html.Partial("_BusTable", Model) 
+      </div>
+</div>
 
-        @{
-            var bussesOptions = new AjaxOptions()
-                                    {
-                                        HttpMethod = "POST",
-                                        Url = Url.Action("UpdateBusses", "Company"),
-                                        InsertionMode = InsertionMode.InsertAfter,
-                                        UpdateTargetId = "request-result",
-                                        OnSuccess = "ticketify.autoHide"
-                                    };
-        }
-
-        @using (Ajax.BeginForm(bussesOptions))
-        {
-            @Html.AntiForgeryToken()
-
-            <div id="request-result" class="auto-hide">
-
+<!-- Modal -->
+<div class="modal fade" id="busModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Route</h4>
             </div>
+            <div class="modal-body">
+                <form id="routesForm" class="form-inline">
+                    <div class="form-group">
+                        <label for="registration">Registration</label>
+                        <input type="text" class="form-control" name="registration" id="registration" value="" placeholder="Vehicle number">
+                    </div>
+                    <div class="form-group">
+                        <label for="capacity">Capacity</label>
+                        <input type="email" class="form-control" name="capacity" value="" id="capacity" placeholder="No of passengers">
+                    </div>
 
-            <div class="form-horizontal">
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                
+                </form>
             </div>
-        }
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Save changes</button>
+            </div>
+        </div>
     </div>
 </div>
 

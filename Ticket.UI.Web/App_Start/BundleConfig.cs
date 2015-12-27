@@ -43,7 +43,7 @@ namespace Ticket.UI.Web
                       "~/Scripts/respond.js"));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/app", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/app", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
                 "~/assets/plugins/bootstrap/js/bootstrap.min.js",
@@ -54,6 +54,20 @@ namespace Ticket.UI.Web
                 "~/assets/plugins/image-hover/js/modernizr.js",
                 "~/assets/js/app.js"
                     ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-sanitize.js",
+                "~/Scripts/angular-resource.js",
+                "~/Scripts/angular-resource.js"
+                ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
+                "~/Scripts/angular-ui/ui-bootstrap.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/utilities").Include("~/Scripts/lodash.js"));
         }
     }
 }

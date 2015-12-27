@@ -21,9 +21,16 @@
         <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
         @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/angular-ui")
+       @Scripts.Render("~/bundles/app")
+        @Scripts.Render("~/bundles/utilities")
+
     </head>
 
-<body class="header-fixed header-fixed-space">
+<body class="header-fixed header-fixed-space" ng-app="ticketify">
     <div class="wrapper">
         <div class="header">
             <div class="container">
@@ -43,10 +50,10 @@
 
         @RenderBody()
     </div><!--/End Wrapper-->
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
+   
+    
 
-    @Scripts.Render("~/bundles/app")
+  
     
     @Scripts.Render("~/bundles/plugins")
     <script type="text/javascript">

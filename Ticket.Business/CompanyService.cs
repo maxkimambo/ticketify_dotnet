@@ -127,19 +127,19 @@ namespace Ticket.Business
 
             busses.Add(new Bus()
             {
-                Id = 1,
+                Id = 2,
                 Number = "T444 ABG",
                 Capacity = 40
             });
             busses.Add(new Bus()
             {
-                Id = 1,
+                Id = 3,
                 Number = "T333 GHF",
                 Capacity = 65
             });
             busses.Add(new Bus()
             {
-                Id = 1,
+                Id = 4,
                 Number = "T333 BNQ",
                 Capacity = 60
             });

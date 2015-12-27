@@ -134,6 +134,11 @@ namespace Ticket.UI.Web.Controllers
             return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
+        //public ActionResult CreateBus(int id)
+        //{
+        //    return this.PartialView("_BussesTab")
+        //}
+
         [HttpPost]
         public ActionResult Payment(int id, Company company)
         {
@@ -142,9 +147,20 @@ namespace Ticket.UI.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProcessRoutes()
+        public ActionResult EditRoute(int id, Location start, Location destination)
         {
-            return this.SendRequestResult("Data saved", RequestResultType.Success);
+            var routes = this.cs.GetListOfRoutes(id);
+
+            foreach (var route in routes)
+            {
+                if (route.Id == id)
+                {
+                    route.Start = start;
+                    route.Destination = destination;
+                }                
+            }
+
+            return this.PartialView("_RouteTable", routes); 
         }
 
         [HttpGet]
