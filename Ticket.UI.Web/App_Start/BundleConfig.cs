@@ -19,6 +19,7 @@ namespace Ticket.UI.Web
                       "~/assets/plugins/font-awesome/css/font-awesome.css",
                       "~/assets/plugins/image-hover/css/img-hover.css",
                       "~/assets/css/pages/page_job.css",
+                      "~/Content/toaster.css",
                       "~/assets/css/custom.css"
                       ));
 
@@ -59,7 +60,7 @@ namespace Ticket.UI.Web
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-sanitize.js",
                 "~/Scripts/angular-resource.js",
-                "~/Scripts/angular-resource.js"
+                "~/Scripts/angular-animate.js"
                 ));
 
 
@@ -67,7 +68,9 @@ namespace Ticket.UI.Web
                 "~/Scripts/angular-ui/ui-bootstrap.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/utilities").Include("~/Scripts/lodash.js"));
+            bundles.Add(new ScriptBundle("~/bundles/utilities").Include(
+                "~/Scripts/lodash.js",
+                "~/Scripts/toaster.js"));
         }
     }
 }

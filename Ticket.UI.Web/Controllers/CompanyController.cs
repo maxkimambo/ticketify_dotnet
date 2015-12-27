@@ -103,26 +103,25 @@ namespace Ticket.UI.Web.Controllers
         public ActionResult UpdateCompanyInfo(Company company)
         {
             var badFields = new StringBuilder();
-            if (!ModelState.IsValid)
-            {
-                foreach (var k in this.ModelState.Keys.Where(k => !this.ModelState.IsValidField(k)))
-                {
-                    badFields.Append(k);
-                    badFields.Append(" ");
-                }
+            //if (!ModelState.IsValid)
+            //{
+            //    foreach (var k in this.ModelState.Keys.Where(k => !this.ModelState.IsValidField(k)))
+            //    {
+            //        badFields.Append(k);
+            //        badFields.Append(" ");
+            //    }
 
-                return this.SendRequestResult(string.Format("Please correct the errors in {0} and submit again", badFields.ToString()), RequestResultType.Warning);
-            }
+            //    return this.SendRequestResult(string.Format("Please correct the errors in {0} and submit again", badFields.ToString()), RequestResultType.Warning);
+            //}
 
             try
             {
                 //this.cs.EditCompany(company);
-                return this.SendRequestResult("Data saved", RequestResultType.Success);
+                return this.SendJsonRequestResult("Data saved", true, null);
             }
             catch (Exception ex)
             {
-                return this.SendRequestResult(string.Format("Error updating information: {0}", ex.Message), RequestResultType.Failed);
-
+                return this.SendJsonRequestResult(ex.Message, false, null);
             }
 
         }
@@ -157,10 +156,10 @@ namespace Ticket.UI.Web.Controllers
                 {
                     route.Start = start;
                     route.Destination = destination;
-                }                
+                }
             }
 
-            return this.PartialView("_RouteTable", routes); 
+            return this.PartialView("_RouteTable", routes);
         }
 
         [HttpGet]

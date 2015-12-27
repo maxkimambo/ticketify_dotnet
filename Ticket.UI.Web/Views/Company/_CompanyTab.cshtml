@@ -1,6 +1,6 @@
 ﻿@model Ticket.Domain.Company
 
-<div class="tab-pane fade active in" id="company" ng-controller="companyController">
+<div class="tab-pane fade active in" id="company" ng-controller="CompanyController as vm">
     <div class="row">
         <div class="panel panel-green margin-bottom-40">
             <div class="panel-heading">
@@ -12,72 +12,84 @@
                     {
                         HttpMethod = "POST",
                         Url = Url.Action("UpdateCompanyInfo", "Company"),
-                        InsertionMode = InsertionMode.InsertAfter,
-                        UpdateTargetId = "request-result",
-                        OnSuccess = "ticketify.autoHide"
+                        OnSuccess = "ticketify.autoHide",
+                        
                     };
                 }
                 @using (Ajax.BeginForm(companyFormOptions))
                 {
                     @Html.AntiForgeryToken()
 
-                    <div id="request-result" class="auto-hide">
-
-                    </div>
-
-                    <div class="form-horizontal">
+                 <div class="form-horizontal">
                         <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-
+                    
                         <div class="form-group">
                             @Html.Label("Company name", new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
                                 @Html.HiddenFor(m => m.Id)
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", ng_model="vm.company.name"} })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                       
                         <div class="form-group">
                             @Html.Label("Contact person", new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" , ng_model="vm.company.contactPerson" } })
                                 @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new
+                                                                                                   {
+                                                                                                       @class = "form-control",
+                                                                                                       ng_model="vm.company.address"
+                                                                                                   } })
                                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new
+                                                                                                 {
+                                                                                                     @class = "form-control",
+                                                                                                     ng_model="vm.company.phone"
+                                                                                                 
+                                                                                                 } })
                                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new
+                                                                                               {
+                                                                                                   @class = "form-control",
+                                                                                                   ng_model="vm.company.fax"
+                                                                                               
+                                                                                               } })
                                 @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Tin, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.Tin, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Tin, new { htmlAttributes = new
+                                                                                               {
+                                                                                                   @class = "form-control",
+                                                                                                   ng_model="vm.company.tin"
+                                                                                               } })
                                 @Html.ValidationMessageFor(model => model.Tin, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-8">
-                                <input type="submit" value="Update" class="btn btn-success" />
+                                <input type="submit" value="Update" ng-click="vm.validate" class="btn btn-success" />
                             </div>
                         </div>
                     </div>

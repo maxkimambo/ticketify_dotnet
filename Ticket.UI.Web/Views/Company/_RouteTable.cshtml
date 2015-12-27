@@ -1,24 +1,25 @@
 ﻿@model IList<Ticket.Domain.Route>
-<table id="routes-table" data-base="@Request.ApplicationPath" class="table table-condensed table-hover table-striped">
-    <thead>
-        <tr>
-            <th>Start</th>
-            <th>Destination</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (var i=0; i< Model.Count(); i++)
-        {
-
+<div ng-controller="BusRoutesController as vm">
+    <table id="routes-table" data-base="@Request.ApplicationPath" class="table table-condensed table-hover table-striped">
+        <thead>
             <tr>
-                <td> @Model[i].Start.Name </td>
-                <td> @Model[i].Destination.Name </td>
-                <td><a href="#" data-route-id="@Model[i].Id" data-toggle="modal" data-target="#routeModal"> <i class="fa fa-edit"></i> </a> </td>
-                <td><a href="#" data-route-id="@Model[i].Id" data-target="#deleteRouteModal"> <i class="fa fa-remove"></i> </a> </td>
+                <th>Start</th>
+                <th>Destination</th>
+                <th></th>
             </tr>
-        }
+        </thead>
+        <tbody>
+         
+            <tr ng-repeat="r in vm.routes">
+             
+                <td> {{r.start.name}}  </td>
+                <td> {{r.destination.name}} </td>
+                <td><a href="#" ng-click="vm.editRoute(r)"> <i class="fa fa-edit"></i> </a> </td>
+                <td><a href="#" ng-click="vm.removeRoute(r)"> <i class="fa fa-remove"></i> </a> </td>
+            </tr>
+           
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 

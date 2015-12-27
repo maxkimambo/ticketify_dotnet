@@ -14,10 +14,16 @@
     }; 
 
     // private stuff 
-    function autoHide() {
-        setTimeout(function () {
-            $('.auto-hide').empty();
-        }, standardTimeout);
+    function autoHide(data) {
+        // pass this to angular. 
+        if (data.Success) {
+            angular.element($("#company")).scope().vm.notifySuccess(data.Message);
+            angular.element($("#company")).scope().$apply();
+
+        } else {
+            angular.element($("#company")).scope().vm.notifyError(data.Message);
+            angular.element($("#company")).scope().$apply();
+        }
     }
     function getBaseUrl() {
         var baseUrl = $("#routes-table").attr('data-base');

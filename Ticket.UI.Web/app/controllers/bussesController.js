@@ -2,10 +2,10 @@
 angular.module('ticketify').controller('BussesController', BussesController);
 
 // injection 
-BussesController.$inject = ['$scope', 'setupData', 'dataService']; 
+BussesController.$inject = ['$scope', 'setupData', 'dataService', 'toasterService']; 
 
 // actual controller 
-function BussesController($scope, setupData, data) {
+function BussesController($scope, setupData, data, toast) {
 
     var vm = this;
     vm.busses = setupData.busses;
@@ -15,8 +15,8 @@ function BussesController($scope, setupData, data) {
     function removeBus(bus) {
 
         var indx = vm.busses.indexOf(bus);
-        vm.busses.splice(indx, 1); 
-
+        vm.busses.splice(indx, 1);
+        toast.success('Bus removed'); 
     };
        
 
