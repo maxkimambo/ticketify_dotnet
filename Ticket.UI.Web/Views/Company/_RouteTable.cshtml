@@ -1,6 +1,6 @@
 ﻿@model IList<Ticket.Domain.Route>
-<div ng-controller="BusRoutesController as vm">
-    <table id="routes-table" data-base="@Request.ApplicationPath" class="table table-condensed table-hover table-striped">
+<div>
+   <table id="routes-table" data-base="@Request.ApplicationPath" class="table table-condensed table-hover table-striped">
         <thead>
             <tr>
                 <th>Start</th>
@@ -9,16 +9,12 @@
             </tr>
         </thead>
         <tbody>
-         
-            <tr ng-repeat="r in vm.routes">
-             
+            <tr ng-repeat="r in routes">
                 <td> {{r.start.name}}  </td>
                 <td> {{r.destination.name}} </td>
-                <td><a href="#" ng-click="vm.editRoute(r)"> <i class="fa fa-edit"></i> </a> </td>
-                <td><a href="#" ng-click="vm.removeRoute(r)"> <i class="fa fa-remove"></i> </a> </td>
+                <td><a href="#" ng-click="editRoute(r)"> <i class="fa fa-edit"></i> </a> </td>
+                <td><a href="#" ng-click="removeRoute(r)"> <i class="fa fa-remove"></i> </a> </td>
             </tr>
-           
-
         </tbody>
     </table>
 </div>

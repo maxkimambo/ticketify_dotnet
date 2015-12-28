@@ -9,56 +9,8 @@
         <h3 class="panel-title"><i class="fa fa-home"></i> Routes </h3>
     </div>
     <div class="panel-body">
-        <button class="btn btn-success"><i class="fa fa-plus"></i> Add route</button>
-        @Html.Partial("_RouteTable", Model)
-    </div>
-</div>
-          
-<!-- Modal -->
-<div class="modal fade" id="routeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Edit Route</h4>
-            </div>
-            <div class="modal-body">
-                <form id="routesForm" class="form-inline">
-                    <div class="form-group">
-                        <label for="start">Start</label>
-                        <input type="text" class="form-control" name="start" id="start" value="" placeholder="Starting point">
-                    </div>
-                    <div class="form-group">
-                        <label for="destination">Destination</label>
-                        <input type="email" class="form-control" name="destination" value="" id="destination" placeholder="Destination">
-                    </div>
-                        
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" onclick="ticketify.saveRouteData()">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Delete Route Modal -->
-<div class="modal fade" id="deleteRouteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-danger" id="myModalLabel">Delete Route</h4>
-            </div>
-            <div class="modal-body">
-                <h4 class="text-danger">You are about to delete this route. Are you sure? </h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" onclick="ticketify.deleteRoute()">Yes Delete</button>
-            </div>
-        </div>
+        <button class="btn btn-success" ng-click="addRoute()"><i class="fa fa-plus"></i> Add Route</button>
+        @Html.Partial("_RouteTable", Model.ToList())
     </div>
 </div>
           

@@ -1,5 +1,5 @@
 ﻿angular.module('ticketify')
-    .controller('ModalController', ModalController);
+    .controller('AddRouteModalController', ModalController);
 
 ModalController.$inject = ['$scope', '$uibModalInstance', 'answer', 'params'];
 

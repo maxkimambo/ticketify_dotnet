@@ -1,5 +1,5 @@
 ﻿@model IList<Ticket.Domain.Bus>
-<div ng-controller="BussesController as vm">
+<div>
     <table id="bustable" class="table table-condensed table-hover table-striped">
         <thead>
             <tr>
@@ -10,7 +10,6 @@
             </tr>
         </thead>
         <tbody>
-          
             <tr ng-repeat="bus in busses">
                 <td>{{bus.number}}</td>
                 <td>{{bus.capacity}}</td>
@@ -21,8 +20,6 @@
                     <a href="#" ng-click="remove(bus)"><i class="fa fa-remove"></i></a>
                 </td>
             </tr>
-
-
         </tbody>
     </table>
 </div>

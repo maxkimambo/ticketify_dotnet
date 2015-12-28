@@ -7,12 +7,19 @@ SetupModalController.$inject = ['$scope', '$uibModal', 'setupData', 'toasterServ
 
 function SetupModalController($scope, $uibModal, setupData, toast) {
 
-    $scope.busses = setupData.busses; 
+    $scope.busses = setupData.busses;
+    $scope.routes = setupData.routes;
+    $scope.company = setupData.company;
+
+    console.log(setupData.routes);
+
+    var currentAction = '';
 
     var params = {
         modalHeader: 'Notification',
-        modalBody: 'Are you sure you want to delete this item'
-
+        modalBody: 'Are you sure you want to delete this item ',
+        proceedText: 'Yes Delete',
+        cancelText: 'Cancel'
     }
 
 
@@ -21,7 +28,7 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
 
     $scope.remove = function(bus) {
 
-        $scope.params.modalBody = "Are you sure you want to delete this item " + bus.number;
+        $scope.params.modalBody = "Are you sure you want to delete this item ?"; 
 
         var modalInstance = $uibModal.open({
             animation: true,
@@ -56,9 +63,9 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
     };
 
     $scope.edit = function (bus) {
-
         $scope.params.modalHeader = "Edit item";
         $scope.params.modalBody = bus.number;
+        $scope.params.proceedText = "Save";
 
         var modalInstance = $uibModal.open({
             animation: true,
@@ -81,5 +88,103 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
         });
     }
 
-   
+    $scope.editRoute = function (route) {
+        $scope.params.modalHeader = "Edit item";
+        $scope.params.modalBody = "";
+        $scope.params.proceedText = "Save";
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'setupModal.html',
+            controller: 'ModalController',
+            size: 'lg',
+            resolve: {
+                params: $scope.params,
+                answer: function () {
+                    return $scope.answer;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (answer) {
+            $scope.selected = answer;
+
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });
+    }
+
+    $scope.removeRoute = function (route) {
+
+        $scope.params.modalBody = "Are you sure you want to delete this route ?";
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'setupModal.html',
+            controller: 'ModalController',
+            size: 'lg',
+            resolve: {
+                params: $scope.params,
+                answer: function () {
+                    return $scope.answer;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (answer) {
+            if (answer) {
+                removeBus(route);
+            }
+
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });
+
+    }
+
+    $scope.addRoute = function () {
+        var routeData = {}; 
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'RoutesModal.html',
+            controller: 'RouteModalController',
+            size: 'lg',
+            resolve: {
+               routeData: function () {
+                    return routeData;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (dataFromModal) {
+            console.log(dataFromModal); 
+
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });
+
+    }
+
+    $scope.addBus = function () {
+        var bus = {};
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'BusModal.html',
+            controller: 'BusModalController',
+            size: 'lg',
+            resolve: {
+                bus: function () {
+                    return bus;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (dataFromModal) {
+            console.log(dataFromModal);
+
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });
+
+    }
 }

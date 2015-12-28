@@ -1,6 +1,6 @@
 ﻿@model Ticket.Domain.Company
 
-<div class="tab-pane fade active in" id="company" ng-controller="CompanyController as vm">
+<div class="tab-pane fade active in" id="company">
     <div class="row">
         <div class="panel panel-green margin-bottom-40">
             <div class="panel-heading">
@@ -28,7 +28,7 @@
                             <div class="col-md-8">
                                 @Html.HiddenFor(m => m.Id)
 
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", ng_model="vm.company.name"} })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", ng_model="company.name"} })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="form-group">
                             @Html.Label("Contact person", new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" , ng_model="vm.company.contactPerson" } })
+                                @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" , ng_model="company.contactPerson" } })
                                 @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 @Html.EditorFor(model => model.Address, new { htmlAttributes = new
                                                                                                    {
                                                                                                        @class = "form-control",
-                                                                                                       ng_model="vm.company.address"
+                                                                                                       ng_model="company.address"
                                                                                                    } })
                                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                             </div>
@@ -57,7 +57,7 @@
                                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new
                                                                                                  {
                                                                                                      @class = "form-control",
-                                                                                                     ng_model="vm.company.phone"
+                                                                                                     ng_model="company.phone"
                                                                                                  
                                                                                                  } })
                                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
@@ -69,7 +69,7 @@
                                 @Html.EditorFor(model => model.Fax, new { htmlAttributes = new
                                                                                                {
                                                                                                    @class = "form-control",
-                                                                                                   ng_model="vm.company.fax"
+                                                                                                   ng_model="company.fax"
                                                                                                
                                                                                                } })
                                 @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
@@ -81,7 +81,7 @@
                                 @Html.EditorFor(model => model.Tin, new { htmlAttributes = new
                                                                                                {
                                                                                                    @class = "form-control",
-                                                                                                   ng_model="vm.company.tin"
+                                                                                                   ng_model="company.tin"
                                                                                                } })
                                 @Html.ValidationMessageFor(model => model.Tin, "", new { @class = "text-danger" })
                             </div>
@@ -89,7 +89,7 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-8">
-                                <input type="submit" value="Update" ng-click="vm.validate" class="btn btn-success" />
+                                <input type="submit" value="Update" ng-click="validate" class="btn btn-success" />
                             </div>
                         </div>
                     </div>
