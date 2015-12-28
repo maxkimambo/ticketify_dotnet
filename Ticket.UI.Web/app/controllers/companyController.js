@@ -16,4 +16,5 @@ function CompanyController($scope, setupData, toast) {
     function notifyError(message) {
         toast.error(message);
     }
+   
 }

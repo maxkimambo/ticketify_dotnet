@@ -8,7 +8,7 @@
     var setupData = Model.ToJson(); 
 }
 
-<div class="container">
+<div class="container" ng-controller="SetupModalController">
     <div class="row tab-v3">
         <div class="col-sm-3">
             <ul class="nav nav-pills nav-stacked">
@@ -43,13 +43,13 @@
             <div class="tab-content">
                 @Html.Partial("_CompanyTab", Model.Company)
                 <div class="tab-pane fade" id="busses">
-                  
-                 @Html.Partial("_BussesTab", Model.Busses)   
-                    
+
+                    @Html.Partial("_BussesTab", Model.Busses)
+
 
                 </div>
                 <div class="tab-pane fade" id="routes">
-                   @Html.Partial("_RoutesTab", Model.Routes)
+                    @Html.Partial("_RoutesTab", Model.Routes)
                 </div>
                 <div class="tab-pane fade" id="payment">
                     @Html.Partial("_PaymentTab", Model.Company)
@@ -58,8 +58,23 @@
         </div>
         @*tab content ends here*@
     </div>
-</div>
+    <!-- Modal dialog -->
+    <script type="text/ng-template" id="setupModal.html">
+        <div class="modal-header">
+            <button type="button" ng-click="close()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-danger" id="setupModalHeaderText">{{params.modalHeader}}</h4>
+        </div>
 
+        <div class="modal-body">
+            <h4 class="text-danger">{{params.modalBody}} </h4>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" ng-click="proceed()">Yes Delete</button>
+            <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+        </div>
+    </script>
+</div>
 <script>
     angular.module("ticketify").value("setupData", @Html.Raw(setupData))
 </script>

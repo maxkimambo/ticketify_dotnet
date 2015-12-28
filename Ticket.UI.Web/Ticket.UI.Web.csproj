@@ -209,6 +209,8 @@
     <Content Include="app\controllers\BusRoutesController.js" />
     <Content Include="app\controllers\bussesController.js" />
     <Content Include="app\controllers\companyController.js" />
+    <Content Include="app\controllers\ModalController.js" />
+    <Content Include="app\controllers\SetupModalController.js" />
     <Content Include="app\services\dataService.js" />
     <Content Include="app\services\toasterService.js" />
     <Content Include="app\setup.js" />
