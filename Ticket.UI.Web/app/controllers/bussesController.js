@@ -8,7 +8,7 @@ BussesController.$inject = ['$scope', 'setupData', 'dataService', 'toasterServic
 function BussesController($scope, setupData, data, toast) {
 
     var vm = this;
-    vm.busses = setupData.busses;
+    //vm.busses = setupData.busses;
     vm.removeBus = removeBus;
     vm.editBus = editBus;
 

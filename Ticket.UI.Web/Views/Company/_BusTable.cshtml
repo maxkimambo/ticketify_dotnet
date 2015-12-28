@@ -11,14 +11,14 @@
         </thead>
         <tbody>
           
-            <tr ng-repeat="bus in vm.busses">
+            <tr ng-repeat="bus in busses">
                 <td>{{bus.number}}</td>
                 <td>{{bus.capacity}}</td>
                 <td>
-                    <a href="#" ng-click="open(bus)"><i class="fa fa-edit"></i></a>
+                    <a href="#" ng-click="edit(bus)"><i class="fa fa-edit"></i></a>
                 </td>
                 <td>
-                    <a href="#" ng-click="vm.removeBus(bus)"><i class="fa fa-remove"></i></a>
+                    <a href="#" ng-click="remove(bus)"><i class="fa fa-remove"></i></a>
                 </td>
             </tr>
 
