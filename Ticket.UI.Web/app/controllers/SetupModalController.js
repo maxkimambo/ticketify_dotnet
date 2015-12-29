@@ -11,10 +11,6 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
     $scope.routes = setupData.routes;
     $scope.company = setupData.company;
 
-    console.log(setupData.routes);
-
-    var currentAction = '';
-
     var params = {
         modalHeader: 'Notification',
         modalBody: 'Are you sure you want to delete this item ',
@@ -56,7 +52,6 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
 
 
     function removeBus(bus) {
-
         var indx = $scope.busses.indexOf(bus);
        $scope.busses.splice(indx, 1);
         toast.success('Bus removed');
@@ -132,15 +127,23 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
         });
 
         modalInstance.result.then(function (answer) {
-            if (answer) {
-                removeBus(route);
-            }
+          if (answer) {
+              removeRoute(route); 
+          }
 
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());
         });
 
+       
     }
+    
+    function removeRoute(route) {
+        //TODO send ajax request to get the route removed on the server side. 
+        var indx = $scope.routes.indexOf(route);
+        $scope.routes.splice(indx, 1);
+        toast.success('Route removed');
+    };
 
     $scope.addRoute = function () {
         var routeData = {}; 
@@ -157,8 +160,8 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
         });
 
         modalInstance.result.then(function (dataFromModal) {
-            console.log(dataFromModal); 
-
+            console.log(dataFromModal);
+            $scope.routes.push(dataFromModal); 
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());
         });
@@ -180,7 +183,7 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
         });
 
         modalInstance.result.then(function (dataFromModal) {
-            console.log(dataFromModal);
+            $scope.busses.push(dataFromModal); 
 
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());
