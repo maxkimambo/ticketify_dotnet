@@ -58,6 +58,7 @@ namespace Ticket.Business
         {
             bus.Company = company;
             busRepo.Insert(bus);
+            unitOfWork.Commit();
         }
 
         public void RemoveBus(Company company, Bus bus)

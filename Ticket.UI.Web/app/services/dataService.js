@@ -21,8 +21,7 @@ function dataService($http) {
         get: get,
         post: post,
         put: put,
-        del : del,
-
+        del : del
     }
 
     return factory;

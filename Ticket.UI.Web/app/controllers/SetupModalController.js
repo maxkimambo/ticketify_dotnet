@@ -3,13 +3,15 @@
 angular.module('ticketify')
     .controller('SetupModalController', SetupModalController);
 
-SetupModalController.$inject = ['$scope', '$uibModal', 'setupData', 'toasterService'];
+SetupModalController.$inject = ['$scope', '$uibModal', 'setupData', 'toasterService', 'BusService'];
 
-function SetupModalController($scope, $uibModal, setupData, toast) {
+function SetupModalController($scope, $uibModal, setupData, toast, BusService) {
 
     $scope.busses = setupData.busses;
     $scope.routes = setupData.routes;
     $scope.company = setupData.company;
+
+   
 
     var params = {
         modalHeader: 'Notification',
@@ -183,7 +185,11 @@ function SetupModalController($scope, $uibModal, setupData, toast) {
         });
 
         modalInstance.result.then(function (dataFromModal) {
-            $scope.busses.push(dataFromModal); 
+          //  $scope.busses.push(dataFromModal);
+
+            BusService.addBus($scope.company.id, dataFromModal).success(function (response) {
+                console.log(response); 
+            }); 
 
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());

@@ -207,8 +207,11 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\companyController.js" />
+    <Content Include="app\controllers\BusModalController.js" />
+    <Content Include="app\controllers\RouteModalController.js" />
     <Content Include="app\controllers\ModalController.js" />
     <Content Include="app\controllers\SetupModalController.js" />
+    <Content Include="app\services\BusService.js" />
     <Content Include="app\services\dataService.js" />
     <Content Include="app\services\toasterService.js" />
     <Content Include="app\setup.js" />

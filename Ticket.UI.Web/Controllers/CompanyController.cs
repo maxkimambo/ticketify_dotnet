@@ -127,6 +127,21 @@ namespace Ticket.UI.Web.Controllers
         }
 
         [HttpPost]
+        public ActionResult AddBus(int id, Bus bus)
+        {
+            var company = this.cs.GetCompanyById(id);
+            this.cs.AddBus(company, bus);
+
+            return this.SendJsonRequestResult("Bus created", true, null);
+        }
+
+        [HttpDelete]
+        public ActionResult RemoveBus(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
         public ActionResult UpdateBusses(int id, Bus bus)
         {
 
@@ -148,7 +163,7 @@ namespace Ticket.UI.Web.Controllers
         [HttpPost]
         public ActionResult EditRoute(int id, Location start, Location destination)
         {
-            var routes = this.cs.GetListOfRoutes(id);
+            var routes = this.cs.GetListOfRoutes(id).ToList();
 
             foreach (var route in routes)
             {
