@@ -16,8 +16,8 @@ namespace Ticket.UI.Web.Controllers
 
         public TicketControllerBase()
         {
-            requestResult = new RequestResult();
-            response = new RequestResponse();
+            this.requestResult = new RequestResult();
+            this.response = new RequestResponse();
         }
 
         /// <summary>
@@ -28,10 +28,10 @@ namespace Ticket.UI.Web.Controllers
         /// <returns></returns>
         public ActionResult SendRequestResult(string messsage, RequestResultType type)
         {
-            requestResult.Message = messsage;
-            requestResult.ResultType = type;
+            this.requestResult.Message = messsage;
+            this.requestResult.ResultType = type;
 
-            return PartialView("_RequestResult", requestResult);
+            return this.PartialView("_RequestResult", this.requestResult);
         }
 
         public ActionResult ToJson(object obj)
@@ -41,16 +41,16 @@ namespace Ticket.UI.Web.Controllers
                                    ContractResolver = new CamelCasePropertyNamesContractResolver()
                                };
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
-            return Content(json, "application/json");
+            return this.Content(json, "application/json");
         }
 
         public JsonResult SendJsonRequestResult(string message, bool success, object data)
         {
-            response.Message = message;
-            response.Data = data;
-            response.Success = success;
+            this.response.Message = message;
+            this.response.Data = data;
+            this.response.Success = success;
 
-            return Json(response, JsonRequestBehavior.AllowGet);
+            return this.Json(this.response, JsonRequestBehavior.AllowGet);
         }
     }
 }

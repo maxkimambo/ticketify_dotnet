@@ -6,7 +6,6 @@ using Ticket.Domain;
 namespace Ticket.Data
 {
     using System.Data.Entity;
-    using Ticket.Data.Model;
 
     /// <summary>
     /// The ticket context.
@@ -14,7 +13,7 @@ namespace Ticket.Data
     public class TicketContext : DbContext
     {
         public TicketContext()
-            : base("dev")
+            : base("name=dev")
         {
 
         }

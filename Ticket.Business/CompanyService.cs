@@ -19,59 +19,57 @@ namespace Ticket.Business
         public CompanyService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            companyRepository = this.unitOfWork.CompanyRepository;
+            this.companyRepository = this.unitOfWork.CompanyRepository;
         }
 
 
         public IEnumerable<Company> GetCompanies()
         {
-            var companies = companyRepository.Get().ToList();
+            var companies = this.companyRepository.Get().ToList();
             return companies;
         }
 
         public Company GetCompanyById(int id)
         {
-            var company = companyRepository.GetById(id);
+            var company = this.companyRepository.GetById(id);
             return company;
         }
 
         public void CreateCompany(Company company)
         {
-           // test we add a bus 
+            // test we add a bus 
 
-            var bus = new Bus();
-            bus.Company = company;
-            bus.Capacity = 65;
-            bus.Number = "T345ABG"; 
+            var bus = new Bus { Company = company, Capacity = 65, Number = "T345ABG" };
+
             company.Busses.Add(bus);
 
-            companyRepository.Insert(company);
-            unitOfWork.Commit(); 
+            this.companyRepository.Insert(company);
+            this.unitOfWork.Commit(); 
         }
 
         public void EditCompany(Company company)
         {
-            companyRepository.Update(company);
-            unitOfWork.Commit();
+            this.companyRepository.Update(company);
+            this.unitOfWork.Commit();
         }
 
         public void DeleteCompany(int id)
         {
-            companyRepository.Delete(id);
-            unitOfWork.Commit();
+            this.companyRepository.Delete(id);
+            this.unitOfWork.Commit();
         }
 
         public void DeleteCompany(Company company)
         {
-            companyRepository.Delete(company);
-            unitOfWork.Commit();
+            this.companyRepository.Delete(company);
+            this.unitOfWork.Commit();
         }
 
         public void AddBus(Company company, Bus bus)
         {
             bus.Company = company;
-            busRepo.Insert(bus);
-            unitOfWork.Commit();
+            this.busRepo.Insert(bus);
+            this.unitOfWork.Commit();
         }
 
         public void RemoveBus(Company company, Bus bus)

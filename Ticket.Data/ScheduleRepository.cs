@@ -20,15 +20,15 @@ namespace Ticket.Data
         // here we will return fake data for now. 
         public override IEnumerable<Schedule> Get(Expression<Func<Schedule, bool>> filter = null, Func<IQueryable<Schedule>, IOrderedQueryable<Schedule>> orderBy = null)
         {
-            scheduleTable = new List<Schedule>();
-          
-            scheduleTable.Add(new Schedule()
+            this.scheduleTable = new List<Schedule>();
+
+            this.scheduleTable.Add(new Schedule()
             {
                 Departure = new DateTime(2015,12,25,6,30,00),
                 Arrival = new DateTime(2015, 12, 25, 6, 30, 00).AddHours(12),
                 Bus = new Bus() { Capacity = 65 }
             });
-            return scheduleTable;
+            return this.scheduleTable;
         }
     }
 }

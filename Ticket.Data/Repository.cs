@@ -30,7 +30,7 @@ namespace Ticket.Data
         /// <summary>
         ///     The context.
         /// </summary>
-        internal TicketContext context;
+        internal TicketContext Context;
 
         /// <summary>
         /// The db set.
@@ -50,8 +50,8 @@ namespace Ticket.Data
         public Repository(TicketContext context)
         {
            
-            this.context = context; 
-            this.dbSet = this.context.Set<T>();
+            this.Context = context; 
+            this.dbSet = this.Context.Set<T>();
         }
 
         #endregion
@@ -66,7 +66,7 @@ namespace Ticket.Data
         /// </param>
         public virtual void Delete(T entity)
         {
-            if (this.context.Entry(entity).State == EntityState.Detached)
+            if (this.Context.Entry(entity).State == EntityState.Detached)
             {
                 this.dbSet.Attach(entity);
             }
@@ -83,7 +83,7 @@ namespace Ticket.Data
         public virtual void Delete(int id)
         {
             T entityToDelete = this.dbSet.Find(id);
-            Delete(entityToDelete);
+            this.Delete(entityToDelete);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Ticket.Data
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
         {
-            IQueryable<T> query = dbSet;
+            IQueryable<T> query = this.dbSet;
 
             // if something was given to filter by then apply it here
             if (filter != null)
@@ -140,7 +140,7 @@ namespace Ticket.Data
         /// </param>
         public virtual void Insert(T entity)
         {
-            this.dbSet.Add(entity);
+            this.dbSet.Add(entity); 
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Ticket.Data
         public virtual void Update(T entity)
         {
             this.dbSet.Attach(entity);
-            this.context.Entry(entity).State = EntityState.Modified;
+            this.Context.Entry(entity).State = EntityState.Modified;
         }
 
         #endregion

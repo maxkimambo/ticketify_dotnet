@@ -23,8 +23,7 @@ namespace Ticket.Business.Tests
 
         public CompanyServiceTests()
         {
-            
-            InitializeSeedData();
+            this.InitializeSeedData();
         }
 
 
@@ -56,7 +55,7 @@ namespace Ticket.Business.Tests
         {
             var companyRepo = new Mock<IRepository<Company>>();
             companyRepo.Setup(s => s.Get(null, null))
-                .Returns(companyList);
+                .Returns(this.companyList);
             var busRepo = new Mock<IRepository<Bus>>().Object;  
             //sut = new CompanyService(companyRepo.Object, busRepo);
             //var result = sut.GetCompanies();

@@ -22,7 +22,7 @@ namespace Ticket.Domain
 
         public Company()
         {
-            Busses = new List<Bus>();
+            this.Busses = new List<Bus>();
         }
 
         /// <summary>
@@ -48,13 +48,12 @@ namespace Ticket.Domain
         /// <summary>
         ///     Gets or sets the id.
         /// </summary>
-       
-        //public int Id { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CompanyId { get; set; }
-        //[Required(ErrorMessage = "Please enter a number registered with mobile banking")]
+        public int Id { get; set; }
+
+       
         public string MobileBankingNumber { get; set; }
 
         public MobileProviderType MobileProvider { get; set; }
@@ -67,7 +66,7 @@ namespace Ticket.Domain
         /// <summary>
         ///     Gets or sets the phone.
         /// </summary>
-        [Required(ErrorMessage = "Please enter the phone number, it is where we shall transfer your money to..")]
+        //[Required(ErrorMessage = "Please enter the phone number, it is where we shall transfer your money to..")]
         public string Phone { get; set; }
 
         /// <summary>

@@ -8,10 +8,10 @@ namespace Ticket.Domain
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BusId { get; set; }
+        public int Id { get; set; }
         public string Number { get; set; }
         public int Capacity { get; set; }
-        public int CompanyId { get; set; }
+       public int CompanyId { get; set; }
         public virtual Company Company { get; set; }
     }
 }

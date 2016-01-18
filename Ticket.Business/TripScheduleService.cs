@@ -75,7 +75,7 @@ namespace Ticket.Business
         /// </exception>
         public IEnumerable<Schedule> GetFullSchedule()
         {
-            var fullSchedule = unitOfWork.ScheduleRepository.Get();
+            var fullSchedule = this.unitOfWork.ScheduleRepository.Get();
 
             return fullSchedule.ToList(); 
         }

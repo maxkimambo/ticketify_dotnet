@@ -7,31 +7,31 @@ namespace Ticket.Data.Migrations
     {
         public override void Up()
         {
-            CreateTable(
+            this.CreateTable(
                 "dbo.Buses",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Number = c.String(),
-                        Capacity = c.Int(nullable: false),
-                        Company_Id = c.Int(),
+                        Capacity = c.Int(),
+                        Company_Id = c.Int(nullable:false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Companies", t => t.Company_Id)
                 .Index(t => t.Company_Id);
-            
-            CreateTable(
+
+            this.CreateTable(
                 "dbo.Companies",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Address = c.String(),
-                        ContactPerson = c.String(nullable: false),
+                        ContactPerson = c.String(),
                         Fax = c.String(),
-                        MobileBankingNumber = c.String(nullable: false),
-                        MobileProvider = c.Int(nullable: false),
+                        MobileBankingNumber = c.String(),
+                        MobileProvider = c.Int(),
                         Name = c.String(),
-                        Phone = c.String(nullable: false),
+                        Phone = c.String(),
                         Tin = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -40,10 +40,10 @@ namespace Ticket.Data.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Buses", "Company_Id", "dbo.Companies");
-            DropIndex("dbo.Buses", new[] { "Company_Id" });
-            DropTable("dbo.Companies");
-            DropTable("dbo.Buses");
+            this.DropForeignKey("dbo.Buses", "Company_Id", "dbo.Companies");
+            this.DropIndex("dbo.Buses", new[] { "Company_Id" });
+            this.DropTable("dbo.Companies");
+            this.DropTable("dbo.Buses");
         }
     }
 }

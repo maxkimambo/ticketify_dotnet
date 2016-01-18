@@ -52,7 +52,7 @@ namespace Ticket.UI.Web.Controllers
         {
             var company = new Company();
 
-            return View(company);
+            return this.View(company);
         }
 
         /// <summary>
@@ -72,22 +72,22 @@ namespace Ticket.UI.Web.Controllers
             //    return View(company);
             //}
 
-            cs.CreateCompany(company);
+            this.cs.CreateCompany(company);
 
-            return View(company);
+            return this.View(company);
         }
 
         [HttpGet]
         public ActionResult Setup(int id)
         {
             // fetch the company 
-            var company = cs.GetCompanyById(id);
-            var busses = cs.GetBusses(id);
-            var routes = cs.GetListOfRoutes(id);
+            var company = this.cs.GetCompanyById(id);
+            var busses = this.cs.GetBusses(id);
+            var routes = this.cs.GetListOfRoutes(id);
 
             if (company == null)
             {
-                ModelState.AddModelError("notfound", "Company not found");
+                this.ModelState.AddModelError("notfound", "Company not found");
             }
 
             var setupVm = new CompanySetupViewModel();
@@ -95,7 +95,7 @@ namespace Ticket.UI.Web.Controllers
             setupVm.Busses = busses;
             setupVm.Routes = routes;
 
-            return View(setupVm);
+            return this.View(setupVm);
         }
 
         [HttpPost]
@@ -116,11 +116,11 @@ namespace Ticket.UI.Web.Controllers
             try
             {
                 //this.cs.EditCompany(company);
-                return SendJsonRequestResult("Data saved", true, null);
+                return this.SendJsonRequestResult("Data saved", true, null);
             }
             catch (Exception ex)
             {
-                return SendJsonRequestResult(ex.Message, false, null);
+                return this.SendJsonRequestResult(ex.Message, false, null);
             }
 
         }
@@ -128,10 +128,10 @@ namespace Ticket.UI.Web.Controllers
         [HttpPost]
         public ActionResult AddBus(int id, Bus bus)
         {
-            var company = cs.GetCompanyById(id);
-            cs.AddBus(company, bus);
+            var company = this.cs.GetCompanyById(id);
+            this.cs.AddBus(company, bus);
 
-            return SendJsonRequestResult("Bus created", true, null);
+            return this.SendJsonRequestResult("Bus created", true, null);
         }
 
         [HttpDelete]
@@ -144,7 +144,7 @@ namespace Ticket.UI.Web.Controllers
         public ActionResult UpdateBusses(int id, Bus bus)
         {
 
-            return SendRequestResult("Data saved", RequestResultType.Success);
+            return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
         //public ActionResult CreateBus(int id)
@@ -156,13 +156,13 @@ namespace Ticket.UI.Web.Controllers
         public ActionResult Payment(int id, Company company)
         {
 
-            return SendRequestResult("Data saved", RequestResultType.Success);
+            return this.SendRequestResult("Data saved", RequestResultType.Success);
         }
 
         [HttpPost]
         public ActionResult EditRoute(int id, Location start, Location destination)
         {
-            var routes = cs.GetListOfRoutes(id).ToList();
+            var routes = this.cs.GetListOfRoutes(id).ToList();
 
             foreach (var route in routes)
             {
@@ -173,14 +173,14 @@ namespace Ticket.UI.Web.Controllers
                 }
             }
 
-            return PartialView("_RouteTable", routes);
+            return this.PartialView("_RouteTable", routes);
         }
 
         [HttpGet]
         public ActionResult Routes(int id)
         {
-            var routes = cs.GetListOfRoutes(id).Where(r => r.Id == id);
-            return base.ToJson(routes);
+            var routes = this.cs.GetListOfRoutes(id).Where(r => r.Id == id);
+            return this.ToJson(routes);
         }
 
         [HttpPost]
@@ -190,24 +190,24 @@ namespace Ticket.UI.Web.Controllers
 
 
             // return a fresh view with available routes. 
-            return GetRoutesForCompany(id);
+            return this.GetRoutesForCompany(id);
         }
 
 
         [HttpGet]
         public ActionResult GetRoutesForCompany(int id)
         {
-            var routes = cs.GetListOfRoutes(id);
+            var routes = this.cs.GetListOfRoutes(id);
 
-            return PartialView("_RouteTable", routes);
+            return this.PartialView("_RouteTable", routes);
         }
 
         [HttpGet]
         public ActionResult GetBussesForCompany(int id)
         {
-            var busses = cs.GetBusses(id);
+            var busses = this.cs.GetBusses(id);
 
-            return PartialView("_BussesTab", busses);
+            return this.PartialView("_BussesTab", busses);
         }
 
 

@@ -53,7 +53,7 @@ namespace Ticket.Data
         /// </param>
         public UnitOfWork()
         {
-            context = new TicketContext();
+            this.context = new TicketContext();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Ticket.Data
         /// </summary>
         ~UnitOfWork()
         {
-            Dispose(false);
+            this.Dispose(false);
         }
 
         #endregion
@@ -76,17 +76,17 @@ namespace Ticket.Data
         {
             get
             {
-                if (companyRepository == null)
+                if (this.companyRepository == null)
                 {
-                    companyRepository = new CompanyRepository(context); 
+                    this.companyRepository = new CompanyRepository(this.context); 
                 }
-                return companyRepository; 
+                return this.companyRepository; 
             }
         }
 
         public IScheduleRepository ScheduleRepository
         {
-            get { return scheduleRepository ?? (scheduleRepository = new ScheduleRepository(context)); }
+            get { return this.scheduleRepository ?? (this.scheduleRepository = new ScheduleRepository(this.context)); }
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Ticket.Data
         {
             try
             {
-                context.SaveChanges();
+                this.context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -112,15 +112,15 @@ namespace Ticket.Data
         /// </param>
         public void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!this.disposed)
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    this.context.Dispose();
                 }
             }
 
-            disposed = true;
+            this.disposed = true;
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Ticket.Data
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
+            this.Dispose(true);
             GC.SuppressFinalize(this);
         }
 
