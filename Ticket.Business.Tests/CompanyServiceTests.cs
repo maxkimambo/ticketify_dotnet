@@ -30,25 +30,25 @@ namespace Ticket.Business.Tests
 
         private void InitializeSeedData()
         {
-            companyList = new List<Company>()
-            {
-                new Company()
-                {
-                    Id = 1, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 1", Tin = "2222"
-                },
-                new Company()
-                {
-                    Id = 2, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 2", Tin = "2222"
-                },
-                new Company()
-                {
-                    Id = 3, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 3", Tin = "2222"
-                },
-                new Company()
-                {
-                    Id = 4, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 4", Tin = "2222"
-                }
-            };
+            //companyList = new List<Company>()
+            //{
+            //    new Company()
+            //    {
+            //        Id = 1, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 1", Tin = "2222"
+            //    },
+            //    new Company()
+            //    {
+            //        Id = 2, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 2", Tin = "2222"
+            //    },
+            //    new Company()
+            //    {
+            //        Id = 3, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 3", Tin = "2222"
+            //    },
+            //    new Company()
+            //    {
+            //        Id = 4, ContactPerson = "Test person", Address = "Some address", Fax = "121212", Phone = "076323432", Name = "Company 4", Tin = "2222"
+            //    }
+            //};
         }
 
         [Fact]

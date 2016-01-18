@@ -11,7 +11,10 @@ namespace Ticket.Data
 
     public class ScheduleRepository : Repository<Schedule>, IScheduleRepository
     {
+        public ScheduleRepository(TicketContext context): base(context)
+        {
 
+        }
         private List<Schedule> scheduleTable;  
 
         // here we will return fake data for now. 

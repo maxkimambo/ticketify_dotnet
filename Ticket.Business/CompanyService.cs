@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +19,7 @@ namespace Ticket.Business
         public CompanyService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            this.companyRepository = this.unitOfWork.CompanyRepository;
+            companyRepository = this.unitOfWork.CompanyRepository;
         }
 
 
@@ -36,22 +37,34 @@ namespace Ticket.Business
 
         public void CreateCompany(Company company)
         {
+           // test we add a bus 
+
+            var bus = new Bus();
+            bus.Company = company;
+            bus.Capacity = 65;
+            bus.Number = "T345ABG"; 
+            company.Busses.Add(bus);
+
             companyRepository.Insert(company);
+            unitOfWork.Commit(); 
         }
 
         public void EditCompany(Company company)
         {
             companyRepository.Update(company);
+            unitOfWork.Commit();
         }
 
         public void DeleteCompany(int id)
         {
             companyRepository.Delete(id);
+            unitOfWork.Commit();
         }
 
         public void DeleteCompany(Company company)
         {
             companyRepository.Delete(company);
+            unitOfWork.Commit();
         }
 
         public void AddBus(Company company, Bus bus)
@@ -118,32 +131,32 @@ namespace Ticket.Business
         {
             var busses = new List<Bus>();
 
-            // for now just dummy data. 
-            busses.Add(new Bus()
-                           {
-                               Id = 1,
-                               Number = "T234 ABG",
-                               Capacity = 60
-                           });
+            //// for now just dummy data. 
+            //busses.Add(new Bus()
+            //               {
+            //                   Id = 1,
+            //                   Number = "T234 ABG",
+            //                   Capacity = 60
+            //               });
 
-            busses.Add(new Bus()
-            {
-                Id = 2,
-                Number = "T444 ABG",
-                Capacity = 40
-            });
-            busses.Add(new Bus()
-            {
-                Id = 3,
-                Number = "T333 GHF",
-                Capacity = 65
-            });
-            busses.Add(new Bus()
-            {
-                Id = 4,
-                Number = "T333 BNQ",
-                Capacity = 60
-            });
+            //busses.Add(new Bus()
+            //{
+            //    Id = 2,
+            //    Number = "T444 ABG",
+            //    Capacity = 40
+            //});
+            //busses.Add(new Bus()
+            //{
+            //    Id = 3,
+            //    Number = "T333 GHF",
+            //    Capacity = 65
+            //});
+            //busses.Add(new Bus()
+            //{
+            //    Id = 4,
+            //    Number = "T333 BNQ",
+            //    Capacity = 60
+            //});
 
             return busses.AsEnumerable();
         }

@@ -1,11 +1,17 @@
-﻿namespace Ticket.Domain
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Ticket.Domain
 {
 
     public class Bus
     {
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BusId { get; set; }
         public string Number { get; set; }
         public int Capacity { get; set; }
-        public Company Company { get; set; }
+        public int CompanyId { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

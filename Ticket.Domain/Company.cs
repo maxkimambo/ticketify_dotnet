@@ -6,6 +6,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Ticket.Domain
 {
     using System.Collections.Generic;
@@ -18,6 +20,11 @@ namespace Ticket.Domain
     {
         #region Public Properties
 
+        public Company()
+        {
+            Busses = new List<Bus>();
+        }
+
         /// <summary>
         ///     Gets or sets the address.
         /// </summary>
@@ -26,12 +33,11 @@ namespace Ticket.Domain
         /// <summary>
         ///     Gets or sets the busses.
         /// </summary>
-        public virtual List<Bus> Busses { get; set; }
+        public virtual ICollection<Bus> Busses { get; set; }
 
         /// <summary>
         ///     Gets or sets the contact person.
         /// </summary>
-        [Required(ErrorMessage = "Contact Person is a required field")]
         public string ContactPerson { get; set; }
 
         /// <summary>
@@ -42,9 +48,13 @@ namespace Ticket.Domain
         /// <summary>
         ///     Gets or sets the id.
         /// </summary>
-        public int Id { get; set; }
+       
+        //public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter a number registered with mobile banking")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CompanyId { get; set; }
+        //[Required(ErrorMessage = "Please enter a number registered with mobile banking")]
         public string MobileBankingNumber { get; set; }
 
         public MobileProviderType MobileProvider { get; set; }

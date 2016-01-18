@@ -47,10 +47,10 @@ namespace Ticket.Data
         /// <param name="context">
         /// The context.
         /// </param>
-        public Repository()
+        public Repository(TicketContext context)
         {
-            //TODO : pass this connection from the config file
-            this.context = new TicketContext("dev");
+           
+            this.context = context; 
             this.dbSet = this.context.Set<T>();
         }
 

@@ -51,11 +51,9 @@ namespace Ticket.Data
         /// <param name="scheduleRepository">
         /// The schedule Repository.
         /// </param>
-        public UnitOfWork(ICompanyRepository companyRepository, IScheduleRepository scheduleRepository)
+        public UnitOfWork()
         {
-            this.companyRepository = companyRepository;
-            this.scheduleRepository = scheduleRepository;
-            this.context = new TicketContext("dev");
+            context = new TicketContext();
         }
 
         /// <summary>
@@ -80,7 +78,7 @@ namespace Ticket.Data
             {
                 if (companyRepository == null)
                 {
-                    companyRepository = new CompanyRepository(); 
+                    companyRepository = new CompanyRepository(context); 
                 }
                 return companyRepository; 
             }
@@ -88,14 +86,7 @@ namespace Ticket.Data
 
         public IScheduleRepository ScheduleRepository
         {
-            get
-            {
-                if (scheduleRepository == null)
-                {
-                    scheduleRepository = new ScheduleRepository(); 
-                }
-                return scheduleRepository; 
-            }
+            get { return scheduleRepository ?? (scheduleRepository = new ScheduleRepository(context)); }
         }
 
         /// <summary>
@@ -105,9 +96,9 @@ namespace Ticket.Data
         {
             try
             {
-                this.context.SaveChanges();
+                context.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

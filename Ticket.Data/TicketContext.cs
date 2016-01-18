@@ -1,5 +1,8 @@
 ﻿
 
+using System.Data.Entity.Migrations;
+using Ticket.Domain;
+
 namespace Ticket.Data
 {
     using System.Data.Entity;
@@ -10,14 +13,24 @@ namespace Ticket.Data
     /// </summary>
     public class TicketContext : DbContext
     {
-        public TicketContext(string connString)
-            : base(connString)
+        public TicketContext()
+            : base("dev")
         {
 
         }
         /// <summary>
         /// Gets or sets the companies.
         /// </summary>
-        public DbSet<CompanyDo> Companies { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Bus> Busses { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Bus>()
+            //    .HasOptional<Company>(c => c.Company)
+            //    .WithMany(b => b.Busses); 
+               
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace Ticket.UI.Web.Controllers
             requestResult.Message = messsage;
             requestResult.ResultType = type;
 
-            return this.PartialView("_RequestResult", requestResult);
+            return PartialView("_RequestResult", requestResult);
         }
 
         public ActionResult ToJson(object obj)
