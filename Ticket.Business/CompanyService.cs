@@ -75,9 +75,10 @@ namespace Ticket.Business
            this.unitOfWork.Commit();
         }
 
-        public void RemoveBus(Company company, Bus bus)
+        public void RemoveBus(int id)
         {
-            throw new NotImplementedException();
+            var busToRemove = this.busRepo.GetById(id); 
+            this.busRepo.Delete(busToRemove);
         }
 
         public IEnumerable<Route> GetListOfRoutes(int companyId)

@@ -137,7 +137,9 @@ namespace Ticket.UI.Web.Controllers
         [HttpDelete]
         public ActionResult RemoveBus(int id)
         {
-            throw new NotImplementedException();
+            this.cs.RemoveBus(id);
+
+            return this.SendJsonRequestResult("Bus deleted", true, null); 
         }
 
         [HttpPost]

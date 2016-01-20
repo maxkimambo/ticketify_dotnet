@@ -19,7 +19,7 @@ namespace Ticket.Interfaces.Business
 
         void AddBus(Company company, Bus bus);
 
-        void RemoveBus(Company company, Bus bus);
+        void RemoveBus(int id);
 
         IEnumerable<Route> GetListOfRoutes(int companyId);
 
