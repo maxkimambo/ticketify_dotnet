@@ -30,8 +30,10 @@ namespace Ticket.Data
         /// </summary>
         private ICompanyRepository companyRepository;
 
-        private IScheduleRepository scheduleRepository; 
+        private IScheduleRepository scheduleRepository;
 
+        private IBusRepository busRepository; 
+   
 
         /// <summary>
         /// The disposed.
@@ -88,6 +90,15 @@ namespace Ticket.Data
         {
             get { return this.scheduleRepository ?? (this.scheduleRepository = new ScheduleRepository(this.context)); }
         }
+
+        public IBusRepository BusRepository
+        {
+            get
+            {
+                return this.busRepository ?? (this.busRepository = new BusRepository(this.context)); 
+            }
+        }
+
 
         /// <summary>
         ///     Saves all the changes that happened in a transaction

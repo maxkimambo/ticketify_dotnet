@@ -57,21 +57,21 @@ namespace Ticket.UI.Web
                     ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/angular.js",
-                "~/Scripts/angular-sanitize.js",
-                "~/Scripts/angular-resource.js",
-                "~/Scripts/angular-animate.js"
+                "~/Scripts/angular/angular.js",
+                "~/Scripts/angular-sanitize/angular-sanitize.js",
+                "~/Scripts/angular-resource/angular-resource.js",
+                "~/Scripts/angular-animate/angular-animate.js"
                 ));
 
 
             bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
-                "~/Scripts/angular-ui/ui-bootstrap.js",
-                "~/Scripts/angular-ui/ui-bootstrap-tpls.js"
+                "~/Scripts/angular-bootstrap/ui-bootstrap.js",
+                "~/Scripts/angular-bootstrap/ui-bootstrap-tpls.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/utilities").Include(
-                "~/Scripts/lodash.js",
-                "~/Scripts/toaster.js"));
+                "~/Scripts/lodash/lodash.js",
+                "~/Scripts/AngularJS-Toaster/toaster.js"));
         }
     }
 }

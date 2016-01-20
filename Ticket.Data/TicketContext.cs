@@ -22,6 +22,8 @@ namespace Ticket.Data
         /// </summary>
         public DbSet<Company> Companies { get; set; }
         public DbSet<Bus> Busses { get; set; }
+        public DbSet<Route> Routes { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

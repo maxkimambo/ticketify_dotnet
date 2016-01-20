@@ -14,12 +14,13 @@ namespace Ticket.Business
         private readonly IUnitOfWork unitOfWork;
         private readonly IRepository<Company> companyRepository;
 
-        private readonly IRepository<Bus> busRepo;
+        private readonly IBusRepository busRepo;
 
         public CompanyService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
             this.companyRepository = this.unitOfWork.CompanyRepository;
+            this.busRepo = this.unitOfWork.BusRepository; 
         }
 
 
@@ -36,7 +37,7 @@ namespace Ticket.Business
         }
 
         public void CreateCompany(Company company)
-        {
+        { 
             // test we add a bus 
 
             var bus = new Bus { Company = company, Capacity = 65, Number = "T345ABG" };
@@ -68,8 +69,10 @@ namespace Ticket.Business
         public void AddBus(Company company, Bus bus)
         {
             bus.Company = company;
-            this.busRepo.Insert(bus);
-            this.unitOfWork.Commit();
+            company.Busses.Add(bus);
+
+           this.companyRepository.Update(company);
+           this.unitOfWork.Commit();
         }
 
         public void RemoveBus(Company company, Bus bus)
@@ -127,36 +130,8 @@ namespace Ticket.Business
 
         public IEnumerable<Bus> GetBusses(int companyId)
         {
-            var busses = new List<Bus>();
-
-            //// for now just dummy data. 
-            //busses.Add(new Bus()
-            //               {
-            //                   Id = 1,
-            //                   Number = "T234 ABG",
-            //                   Capacity = 60
-            //               });
-
-            //busses.Add(new Bus()
-            //{
-            //    Id = 2,
-            //    Number = "T444 ABG",
-            //    Capacity = 40
-            //});
-            //busses.Add(new Bus()
-            //{
-            //    Id = 3,
-            //    Number = "T333 GHF",
-            //    Capacity = 65
-            //});
-            //busses.Add(new Bus()
-            //{
-            //    Id = 4,
-            //    Number = "T333 BNQ",
-            //    Capacity = 60
-            //});
-
-            return busses.AsEnumerable();
+            var busses = this.busRepo.Get(b => b.CompanyId == companyId).ToList();
+            return busses; 
         }
     }
 }

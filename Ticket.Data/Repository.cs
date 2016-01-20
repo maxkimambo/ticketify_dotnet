@@ -96,7 +96,7 @@ namespace Ticket.Data
         /// The order by.
         /// </param>
         /// <returns>
-        /// The <see cref="IEnumerable">List of Objects
+        /// The <see cref="IEnumerable{T}">List of Objects </see>
         /// </returns>
         public virtual IEnumerable<T> Get(
             Expression<Func<T, bool>> filter = null,

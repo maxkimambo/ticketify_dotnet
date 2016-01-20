@@ -131,7 +131,7 @@ namespace Ticket.UI.Web.Controllers
             var company = this.cs.GetCompanyById(id);
             this.cs.AddBus(company, bus);
 
-            return this.SendJsonRequestResult("Bus created", true, null);
+            return this.SendJsonRequestResult("Bus created", true, new {id = bus.Id});
         }
 
         [HttpDelete]

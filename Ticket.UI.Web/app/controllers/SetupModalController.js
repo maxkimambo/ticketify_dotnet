@@ -188,7 +188,13 @@ function SetupModalController($scope, $uibModal, setupData, toast, BusService) {
           //  $scope.busses.push(dataFromModal);
 
             BusService.addBus($scope.company.id, dataFromModal).success(function (response) {
-                console.log(response); 
+                if (response.Success) {
+                    dataFromModal.id = response.Data.id;
+                    $scope.busses.push(dataFromModal);
+                    toast.success(response.Message); 
+                }
+               
+                
             }); 
 
         }, function () {

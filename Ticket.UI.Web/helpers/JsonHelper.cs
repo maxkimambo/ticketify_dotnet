@@ -13,13 +13,13 @@ namespace Ticket.UI.Web.helpers
             using (var stringWriter = new StringWriter())
             using (var jsonWriter = new JsonTextWriter(stringWriter))
             {
-
+                
                 var serializer = new JsonSerializer();
                 serializer.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
+               
                 // to disable quotes around object names
                 jsonWriter.QuoteName = false;
-
+                serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; 
                 serializer.Serialize(jsonWriter, obj);
                 return stringWriter.ToString();
             }

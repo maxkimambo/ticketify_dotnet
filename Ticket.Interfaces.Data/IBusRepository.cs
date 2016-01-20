@@ -8,11 +8,7 @@ namespace Ticket.Interfaces.Data
 {
     using Ticket.Domain;
 
-    /// <summary>
-    /// The CompanyRepository interface.
-    /// </summary>
-    public interface ICompanyRepository : IRepository<Company>
+    public interface IBusRepository : IRepository<Bus>
     {
     }
-    
 }

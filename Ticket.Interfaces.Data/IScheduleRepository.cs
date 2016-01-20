@@ -10,5 +10,6 @@ namespace Ticket.Interfaces.Data
 
     public interface IScheduleRepository : IRepository<Schedule>
     {
+
     }
 }
