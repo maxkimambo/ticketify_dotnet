@@ -24,5 +24,7 @@ namespace Ticket.Interfaces.Business
         IEnumerable<Route> GetListOfRoutes(int companyId);
 
         IEnumerable<Bus> GetBusses(int companyId);
+
+        void UpdateBus(Bus bus); 
     }
 }

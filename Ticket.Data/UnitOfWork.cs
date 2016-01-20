@@ -32,8 +32,9 @@ namespace Ticket.Data
 
         private IScheduleRepository scheduleRepository;
 
-        private IBusRepository busRepository; 
-   
+        private IBusRepository busRepository;
+
+        private IRouteRepository routeRepository; 
 
         /// <summary>
         /// The disposed.
@@ -99,6 +100,13 @@ namespace Ticket.Data
             }
         }
 
+        public IRouteRepository RouteRepository
+        {
+            get
+            {
+                return this.RouteRepository ?? (this.routeRepository = new RoutesRepository(this.context)); 
+            }
+        }
 
         /// <summary>
         ///     Saves all the changes that happened in a transaction

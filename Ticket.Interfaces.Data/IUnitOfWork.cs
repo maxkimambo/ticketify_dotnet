@@ -19,6 +19,8 @@ namespace Ticket.Interfaces.Data
 
         IBusRepository BusRepository { get;}
 
+        IRouteRepository RouteRepository { get;  }
+
 
         /// <summary>
         ///     Saves all the changes that happened in a transaction

@@ -145,6 +145,7 @@ namespace Ticket.UI.Web.Controllers
         [HttpPost]
         public ActionResult UpdateBusses(int id, Bus bus)
         {
+            this.cs.UpdateBus(bus); 
 
             return this.SendRequestResult("Data saved", RequestResultType.Success);
         }

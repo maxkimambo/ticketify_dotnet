@@ -14,6 +14,8 @@ namespace Ticket.Business
         private readonly IUnitOfWork unitOfWork;
         private readonly IRepository<Company> companyRepository;
 
+        private readonly IRouteRepository routesRepo; 
+
         private readonly IBusRepository busRepo;
 
         public CompanyService(IUnitOfWork unitOfWork)
@@ -83,47 +85,49 @@ namespace Ticket.Business
 
         public IEnumerable<Route> GetListOfRoutes(int companyId)
         {
-            var routes = new List<Route>();
-            var dar = new Location() { Id = 1, Name = "Dar es salaam" };
-            var mbeya = new Location() { Id = 2, Name = "Mbeya" };
-            var arusha = new Location() { Id = 3, Name = "Arusha" };
-            var moshi = new Location() { Id = 3, Name = "Moshi" };
-            var nairobi = new Location() { Id = 3, Name = "Nairobi" };
+            var routes = this.routesRepo.Get(r => r.Company.Id == companyId).ToList(); 
 
-            routes.Add(new Route()
-                           {
-                               Id = 1,
-                               Start = dar,
-                               Destination = arusha
-                           });
 
-            routes.Add(new Route()
-                           {
-                               Id = 2,
-                               Start = dar,
-                               Destination = moshi
-                           });
+            //var dar = new Location() { Id = 1, Name = "Dar es salaam" };
+            //var mbeya = new Location() { Id = 2, Name = "Mbeya" };
+            //var arusha = new Location() { Id = 3, Name = "Arusha" };
+            //var moshi = new Location() { Id = 3, Name = "Moshi" };
+            //var nairobi = new Location() { Id = 3, Name = "Nairobi" };
 
-            routes.Add(new Route()
-            {
-                Id = 2,
-                Start = dar,
-                Destination = mbeya
-            });
+            //routes.Add(new Route()
+            //               {
+            //                   Id = 1,
+            //                   Start = dar,
+            //                   Destination = arusha
+            //               });
 
-            routes.Add(new Route()
-            {
-                Id = 3,
-                Start = moshi,
-                Destination = arusha
-            });
+            //routes.Add(new Route()
+            //               {
+            //                   Id = 2,
+            //                   Start = dar,
+            //                   Destination = moshi
+            //               });
 
-            routes.Add(new Route()
-            {
-                Id = 4,
-                Start = arusha,
-                Destination = mbeya
-            });
+            //routes.Add(new Route()
+            //{
+            //    Id = 2,
+            //    Start = dar,
+            //    Destination = mbeya
+            //});
+
+            //routes.Add(new Route()
+            //{
+            //    Id = 3,
+            //    Start = moshi,
+            //    Destination = arusha
+            //});
+
+            //routes.Add(new Route()
+            //{
+            //    Id = 4,
+            //    Start = arusha,
+            //    Destination = mbeya
+            //});
 
 
             return routes;
@@ -133,6 +137,11 @@ namespace Ticket.Business
         {
             var busses = this.busRepo.Get(b => b.CompanyId == companyId).ToList();
             return busses; 
+        }
+
+        public void UpdateBus(Bus bus)
+        {
+           this.busRepo.Update(bus);
         }
     }
 }
